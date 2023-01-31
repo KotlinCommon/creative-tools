@@ -1,11 +1,9 @@
-package de.cicerohellmann.core.tooling.compose
+package daat.spart.common.engine
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import daat.spart.common.engine.AppScreenDimensions
-import de.cicerohellmann.core.tooling.measurement.Size
 
 @Composable
 fun AppPreviewWrapper(content: @Composable (Size) -> Unit) {
