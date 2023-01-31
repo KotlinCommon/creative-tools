@@ -1,8 +1,5 @@
-package de.cicerohellmann.crafting.data
+package daat.spart.common.engine
 
-import daat.spart.common.engine.Presentation
-import de.cicerohellmann.core.data.idGenerator
-import de.cicerohellmann.types.*
 import java.math.BigDecimal
 
 interface AdvancedGameItem {
