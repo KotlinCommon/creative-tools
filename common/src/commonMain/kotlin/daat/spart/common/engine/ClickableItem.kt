@@ -19,9 +19,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import daat.spart.common.engine.SettingsSingleton.settings
-import de.cicerohellmann.core.tooling.compose.AppPreviewWrapper
-import de.cicerohellmann.core.tooling.measurement.gu
-import de.cicerohellmann.crafting.data.AdvancedGameItem
 
 
 val appButton = ClickableConfiguration(size = Size(width = 16, height = 8), color = Color.Blue)
