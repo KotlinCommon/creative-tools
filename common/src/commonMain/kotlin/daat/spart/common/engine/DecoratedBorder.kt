@@ -10,7 +10,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.times
-import de.cicerohellmann.core.tooling.measurement.gu
 
 private interface CustomDrawModifier : DrawModifier {
     override fun ContentDrawScope.draw()
