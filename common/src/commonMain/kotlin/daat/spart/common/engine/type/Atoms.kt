@@ -1,6 +1,4 @@
-package daat.spart.common.engine
-
-import daat.spart.common.engine.type.Atom
+package daat.spart.common.engine.type
 
 object Atoms{
 
