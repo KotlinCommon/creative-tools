@@ -1,4 +1,4 @@
-package daat.spart.common.engine
+package daat.spart.common.engine.composeTools
 
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.runtime.Composable
