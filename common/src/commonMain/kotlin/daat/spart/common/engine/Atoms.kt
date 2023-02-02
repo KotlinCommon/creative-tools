@@ -1,5 +1,7 @@
 package daat.spart.common.engine
 
+import daat.spart.common.engine.type.Atom
+
 object Atoms{
 
     private val String.getAtom
