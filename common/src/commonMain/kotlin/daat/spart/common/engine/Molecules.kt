@@ -1,11 +1,11 @@
 package daat.spart.common.engine
 
-import de.cicerohellmann.crafting.data.sample.Atoms.Carbon
-import de.cicerohellmann.crafting.data.sample.Atoms.Hydrogen
-import de.cicerohellmann.crafting.data.sample.Atoms.Nitrogen
-import de.cicerohellmann.crafting.data.sample.Atoms.Oxygen
-import de.cicerohellmann.crafting.data.sample.Atoms.Phosphorus
-import de.cicerohellmann.crafting.data.sample.Atoms.Sulfur
+import daat.spart.common.engine.Atoms.Carbon
+import daat.spart.common.engine.Atoms.Hydrogen
+import daat.spart.common.engine.Atoms.Nitrogen
+import daat.spart.common.engine.Atoms.Oxygen
+import daat.spart.common.engine.Atoms.Phosphorus
+import daat.spart.common.engine.Atoms.Sulfur
 
 val Collagen = MoleculeItemMaterial("Collagen", "C258H400N72O78S6", listOf(Carbon, Hydrogen, Nitrogen, Oxygen, Sulfur))
 val Elastin = MoleculeItemMaterial("Elastin", "C267H442N52O67S6", listOf(Carbon, Hydrogen, Nitrogen, Oxygen, Sulfur))
