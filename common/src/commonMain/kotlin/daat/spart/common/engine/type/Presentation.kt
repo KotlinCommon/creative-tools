@@ -1,4 +1,4 @@
-package daat.spart.common.engine
+package daat.spart.common.engine.type
 
 sealed class Presentation {
     data class Image(val imageId: Int?) : Presentation()
