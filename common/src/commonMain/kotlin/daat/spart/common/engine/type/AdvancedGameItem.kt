@@ -2,6 +2,7 @@ package daat.spart.common.engine.type
 
 import daat.spart.common.engine.coroutineWithScope
 import daat.spart.common.engine.integrityDecrease
+import daat.spart.common.engine.tools.idGenerator
 import java.math.BigDecimal
 
 interface AdvancedGameItem {
