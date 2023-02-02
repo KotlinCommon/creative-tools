@@ -1,4 +1,4 @@
-package daat.spart.common.engine
+package daat.spart.common.engine.type
 
 interface ChemicalEntity {
     val name: String
