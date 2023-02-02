@@ -1,7 +1,6 @@
 package daat.spart.common.engine
 
 
-import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -16,19 +15,17 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import daat.spart.common.engine.SettingsSingleton.settings
-
 
 val appButton = ClickableConfiguration(size = Size(width = 16, height = 8), color = Color.Blue)
 val appButtonClickies = ClickableConfiguration(size = Size(size = 5), color = Color.Blue)
 val appButtonItem = ClickableConfiguration(size = Size(size = 10), color = Color.Blue)
 
 @Composable
-@Preview
 private fun ClickableItemPreview() {
     AppPreviewWrapper {
+//        TODO: Need to import Burgers
 //        ClickableItem(config = appButtonItem, item = Burger)
         AppButton(config = appButton, text = "This is a test")
     }
@@ -84,7 +81,7 @@ fun RenderPresentation(presentation: Presentation, itemName: String) {
             is Presentation.Image -> imageId?.let {
                 Image(
                     //TODO: Fix resource path so it works with both Android, JS and Desktop
-                    painter = painterResource("Some path"),
+                    painter = painterResource(presentation),
                     contentDescription = itemName
                 )
             }
