@@ -17,6 +17,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.Role
 import daat.spart.common.engine.SettingsSingleton.settings
+import daat.spart.common.engine.compose.AppText
+import daat.spart.common.engine.composeTools.AppPreviewWrapper
+import daat.spart.common.engine.composeTools.painterResource
+import daat.spart.common.engine.tools.gu
+import daat.spart.common.engine.type.AdvancedGameItem
+import daat.spart.common.engine.type.Presentation
+import daat.spart.common.engine.type.Size
 
 val appButton = ClickableConfiguration(size = Size(width = 16, height = 8), color = Color.Blue)
 val appButtonClickies = ClickableConfiguration(size = Size(size = 5), color = Color.Blue)
