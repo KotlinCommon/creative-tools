@@ -1,8 +1,9 @@
-package daat.spart.common.engine
+package daat.spart.common.engine.composeTools
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import daat.spart.common.engine.SettingsSingleton.settings
+import daat.spart.common.engine.type.Size
 
 /**
  * Provides a lambda with the size parameters
