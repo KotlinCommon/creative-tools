@@ -1,6 +1,4 @@
-package de.cicerohellmann.crafting.data.sample
-
-import de.cicerohellmann.crafting.data.Atom
+package daat.spart.common.engine
 
 object Atoms{
 
