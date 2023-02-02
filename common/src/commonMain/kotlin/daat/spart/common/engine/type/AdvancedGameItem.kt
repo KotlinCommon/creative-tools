@@ -1,5 +1,7 @@
-package daat.spart.common.engine
+package daat.spart.common.engine.type
 
+import daat.spart.common.engine.coroutineWithScope
+import daat.spart.common.engine.integrityDecrease
 import java.math.BigDecimal
 
 interface AdvancedGameItem {
