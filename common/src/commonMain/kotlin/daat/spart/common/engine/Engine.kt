@@ -4,7 +4,7 @@ import androidx.compose.runtime.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
 
-val simulation = GlobalScope.launch() {
+val simulation = GlobalScope.launch {
     simulation()
 }
 
