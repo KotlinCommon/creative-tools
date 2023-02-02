@@ -1,4 +1,4 @@
-package daat.spart.common.engine
+package daat.spart.common.engine.type
 
 class Percentage(val value: Double) {
     init {

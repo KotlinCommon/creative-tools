@@ -1,4 +1,4 @@
-package daat.spart.common.engine
+package daat.spart.common.engine.type
 
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
