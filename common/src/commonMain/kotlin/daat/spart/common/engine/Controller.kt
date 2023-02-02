@@ -1,10 +1,10 @@
 package daat.spart.common.engine
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import daat.spart.common.engine.BaseDimensions.Companion.buttonSize
+import daat.spart.common.engine.tools.BaseDimensions.Companion.buttonSize
 
 @Composable
 fun PreviewController() {
