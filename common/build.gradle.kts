@@ -13,7 +13,7 @@ kotlin {
     android()
     jvm("desktop") {
         compilations.all {
-            kotlinOptions.jvmTarget = "11"
+            kotlinOptions.jvmTarget = "16"
         }
     }
     sourceSets {
@@ -31,6 +31,7 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
+                implementation("androidx.compose.ui:ui-tooling-preview:1.3.3")
                 api("androidx.appcompat:appcompat:1.6.0")
                 api("androidx.core:core-ktx:1.9.0")
             }
