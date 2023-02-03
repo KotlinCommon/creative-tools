@@ -4,6 +4,7 @@ import androidx.compose.runtime.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
 
+@OptIn(DelicateCoroutinesApi::class)
 val simulation = GlobalScope.launch {
     simulation()
 }
