@@ -34,3 +34,5 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+.gradle/buildOutputCleanup/buildOutputCleanup.lock
+.gradle/buildOutputCleanup/outputFiles.bin
