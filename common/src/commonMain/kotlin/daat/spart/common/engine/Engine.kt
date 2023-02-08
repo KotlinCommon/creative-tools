@@ -13,9 +13,15 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
 
+val thisScope = GlobalScope
+fun thisCoroutine(launchSomeShit: () -> Unit) {
+    thisScope.launch {
+        launchSomeShit()
+    }
+}
 
 @OptIn(DelicateCoroutinesApi::class)
-val simulation = GlobalScope.launch {
+val simulation = thisScope.launch {
     simulation()
 }
 
@@ -81,7 +87,7 @@ private suspend fun simulation(
                 // `gameTime` is calculated as the time remaining to wait before updating the game state again.
                 gameTime = (lastLoopTime - System.nanoTime() + optimalTime) / oneSecondInANanoSecond
                 // The value of `delta` is printed.
-                println(delta)
+//                println(delta)
                 // The coroutine waits for the calculated `gameTime` before moving on to the next iteration.
                 delay((gameTime))
             }
