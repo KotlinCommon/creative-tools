@@ -14,34 +14,34 @@ import androidx.compose.ui.graphics.drawscope.Stroke
 import daat.spart.common.engine.compose.Controller
 import daat.spart.common.engine.type.Position
 
-@Composable
-fun EngineExample() {
-    var position = Position(0, 0.0)
-    SimulatedCompose {
-        MaterialTheme {
-            Surface(
-            ) {
-                Column {
-                    Canvas(
-                        Modifier
-                            .fillMaxSize(0.5F)
-                            .background(Color.White)
-                    ) {
-                        drawCircle(
-                            Color.Black,
-                            radius = 20F,
-                            center = Offset(position.x.toFloat(), position.y.toFloat()),
-                            style = Stroke(width = 10F)
-                        )
-                    }
-                    Controller(moveUp = { position = position.copy(y = position.y - 100) },
-                        moveDown = { position = position.copy(y = position.y + 100) },
-                        moveLeft = { position = position.copy(x = position.x - 100) },
-                        moveRight = { position = position.copy(x = position.x + 100) }) {
-
-                    }
-                }
-            }
-        }
-    }
-}
+//@Composable
+//fun EngineExample() {
+//    var position = Position(0, 0.0)
+//    SimulatedCompose {
+//        MaterialTheme {
+//            Surface(
+//            ) {
+//                Column {
+//                    Canvas(
+//                        Modifier
+//                            .fillMaxSize(0.5F)
+//                            .background(Color.White)
+//                    ) {
+//                        drawCircle(
+//                            Color.Black,
+//                            radius = 20F,
+//                            center = Offset(position.x.toFloat(), position.y.toFloat()),
+//                            style = Stroke(width = 10F)
+//                        )
+//                    }
+//                    Controller(moveUp = { position = position.copy(y = position.y - 100) },
+//                        moveDown = { position = position.copy(y = position.y + 100) },
+//                        moveLeft = { position = position.copy(x = position.x - 100) },
+//                        moveRight = { position = position.copy(x = position.x + 100) }) {
+//
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}
