@@ -2,26 +2,28 @@ package daat.spart.common
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.unit.dp
 import daat.spart.common.engine.SimulatedCompose
 import daat.spart.common.engine.compose.Controller
 import daat.spart.common.engine.type.Position
 
 @Composable
 fun App() {
-    val movingObject = ObjectWithAcceleration()
+    val bounds = Bounds(maxX = 200.0, maxY = 200.0)
+    val movingObject = ObjectWithAcceleration(bounds = bounds)
     Column {
 
 
         SimulatedCompose(
             Modifier
-                .fillMaxSize(0.5F)
+                .size(bounds.maxX.dp, bounds.maxY.dp)
                 .background(Color.White)
         ) {
 
@@ -44,37 +46,21 @@ fun App() {
     }
 }
 
-fun DrawScope.extracted(position: Position) {
-    drawCircle(
-        Color.Black,
-        radius = 20F,
-        center = Offset(position.x.toFloat(), position.y.toFloat()),
-        style = Stroke(width = 10F)
-    )
-}
-
-class ObjectWithAcceleration {
-    var position = Position(0.0, 0.0)
+class ObjectWithAcceleration(
+    private val bounds: Bounds,
+    private val radius: Float = 20F
+) {
+    var position = Position(10.0 + radius, 10.0 + radius)
     private var vx = 0.0
     private var vy = 0.0
-//    private var ax = 0.0
-//    private var ay = 0.0
 
     fun simulation(delta: Double) {
-        println("vx $vx")
-        println("vy $vy")
-//        println("ax $ax")
-//        println("ay $ay")
-        println("position.x ${position.x}")
-        println("position.y ${position.y}")
-        // Update velocity based on acceleration
-//        vx += ax * delta
-//        vy += ay * delta
+        //bounce on collision
+        detectCollision()
 
         // Update position based on velocity
         position.x += vx * delta
         position.y += vy * delta
-//        position = position.copy(x = vx * delta, y = vy * delta)
     }
 
     fun move(x: Double = 0.0, y: Double = 0.0) {
@@ -85,16 +71,32 @@ class ObjectWithAcceleration {
     fun stop() {
         vx = 0.0
         vy = 0.0
+    }
 
-
+    private fun detectCollision() {
+        when {
+            position.x + radius >= bounds.maxX -> vx *= -1.0
+            position.x + radius <= bounds.x -> vx *= -1.0
+            position.y + radius >= bounds.maxY -> vy *= -1.0
+            position.y + radius <= bounds.y -> vy *= -1.0
+        }
     }
 
     fun render(content: DrawScope) {
         content.drawCircle(
             Color.Black,
-            radius = 20F,
+            radius = radius,
             center = Offset(position.x.toFloat(), position.y.toFloat()),
             style = Stroke(width = 10F)
         )
     }
 }
+
+
+data class Bounds(
+    val x: Double = 0.0,
+    val maxX: Double = 0.0,
+    val y: Double = 0.0,
+    val maxY: Double = 0.0,
+
+    )
