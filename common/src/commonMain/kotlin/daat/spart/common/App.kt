@@ -36,8 +36,9 @@ fun App() {
         Controller(moveUp = { movingObject.move(y = -100.0) },
             moveDown = { movingObject.move(y = 100.0) },
             moveLeft = { movingObject.move(x = -100.0) },
-            moveRight = { movingObject.move(x = 100.0) }) {
-        }
+            moveRight = { movingObject.move(x = 100.0) },
+            quitGame = { movingObject.stop() }
+        )
 
 
     }
@@ -56,19 +57,19 @@ class ObjectWithAcceleration {
     var position = Position(0.0, 0.0)
     private var vx = 0.0
     private var vy = 0.0
-    private var ax = 0.0
-    private var ay = 0.0
+//    private var ax = 0.0
+//    private var ay = 0.0
 
     fun simulation(delta: Double) {
         println("vx $vx")
         println("vy $vy")
-        println("ax $ax")
-        println("ay $ay")
+//        println("ax $ax")
+//        println("ay $ay")
         println("position.x ${position.x}")
         println("position.y ${position.y}")
         // Update velocity based on acceleration
-        vx += ax * delta
-        vy += ay * delta
+//        vx += ax * delta
+//        vy += ay * delta
 
         // Update position based on velocity
         position.x += vx * delta
@@ -77,9 +78,15 @@ class ObjectWithAcceleration {
     }
 
     fun move(x: Double = 0.0, y: Double = 0.0) {
-        vx+=x/10
-        vy+=y/10
-//        position = position.copy(x = position.x + x, y = position.y + y)
+        vx += x / 100
+        vy += y / 100
+    }
+
+    fun stop() {
+        vx = 0.0
+        vy = 0.0
+
+
     }
 
     fun render(content: DrawScope) {
