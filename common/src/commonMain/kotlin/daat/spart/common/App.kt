@@ -11,9 +11,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
-import daat.spart.common.engine.SimulatedCompose
+import daat.spart.common.engine.*
 import daat.spart.common.engine.compose.Controller
 import daat.spart.common.engine.type.Position
+import kotlinx.coroutines.launch
+import kotlin.time.times
 
 @Composable
 fun App() {
@@ -25,11 +27,16 @@ fun App() {
                 .size(bounds.maxX.dp, bounds.maxY.dp)
                 .background(Color.White)
         ) {
-            movingObject.simulation(it)
             movingObject.render(this)
         }
 
-        Controller(moveUp = { movingObject.move(y = -1.0) },
+        thisScope.launch {
+            mutableDelta.collect {
+                movingObject.simulation(it)
+            }
+        }
+
+        Controller(moveUp = { movingObject.move(y = -1000.0) },
             moveDown = { movingObject.move(y = 1.0) },
             moveLeft = { movingObject.move(x = -1.0) },
             moveRight = { movingObject.move(x = 1.0) },
@@ -61,8 +68,8 @@ class ObjectWithAcceleration(
     }
 
     fun move(x: Double = 0.0, y: Double = 0.0) {
-        vx += x
-        vy += y
+        vx+= x
+        vy+= y
     }
 
     fun stop() {
