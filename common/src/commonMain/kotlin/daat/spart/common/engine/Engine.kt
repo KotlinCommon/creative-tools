@@ -1,6 +1,13 @@
 package daat.spart.common.engine
 
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.DrawScope
+import daat.spart.common.extracted
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
 
@@ -45,7 +52,10 @@ private suspend fun simulation(
 }
 
 @Composable
-fun SimulatedCompose(content: @Composable (Double) -> Unit) {
+fun SimulatedCompose(modifier: Modifier = Modifier, content: DrawScope.(Double) -> Unit) {
     val test by remember { mutableStateOf(mutableDelta) }
-    content(test.collectAsState().value)
+    val state = test.collectAsState().value
+    Canvas(modifier) {
+        content(state)
+    }
 }
