@@ -13,8 +13,11 @@ import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.PointerEventType
+import androidx.compose.ui.input.pointer.onPointerEvent
 import androidx.compose.ui.semantics.Role
 import daat.spart.common.engine.SettingsSingleton.settings
 import daat.spart.common.engine.compose.AppText
@@ -29,6 +32,7 @@ val appButton = ClickableConfiguration(size = Size(width = 16, height = 8), colo
 val appButtonClickies = ClickableConfiguration(size = Size(size = 5), color = Color.Blue)
 val appButtonItem = ClickableConfiguration(size = Size(size = 10), color = Color.Blue)
 
+@ExperimentalComposeUiApi
 @Composable
 private fun ClickableItemPreview() {
     AppPreviewWrapper {
@@ -110,6 +114,7 @@ data class ClickableConfiguration(
 )
 
 
+@ExperimentalComposeUiApi
 @Composable
 fun AppButton(
     config: ClickableConfiguration = ClickableConfiguration(),
@@ -127,15 +132,26 @@ fun AppButton(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .clickable(
-                    interactionSource = remember { MutableInteractionSource() },
-                    indication = rememberRipple(),
-                    enabled = true,
-                    role = Role.Button,
-                    onClick = {
-                        config.onClick()
-                    }
-                ),
+                .onPointerEvent(
+                    eventType = PointerEventType.Press,
+                    onEvent = {
+                        thisCoroutine {
+                            config.onClick()
+                        }
+                    })
+//                .clickable(
+//                    interactionSource = remember { MutableInteractionSource() },
+//                    indication = rememberRipple(),
+//                    enabled = true,
+//                    role = Role.Button,
+//                    onClick = {
+//                        thisCoroutine{
+//                            config.onClick()
+//                        }
+//
+//                    }
+//                )
+            ,
             content = {}
         )
         AppText(text = text)
