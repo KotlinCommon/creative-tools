@@ -14,6 +14,8 @@ import androidx.compose.ui.unit.dp
 import daat.spart.common.engine.*
 import daat.spart.common.engine.compose.Controller
 import daat.spart.common.engine.type.Position
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import kotlin.time.times
 
@@ -30,8 +32,8 @@ fun App() {
             movingObject.render(this)
         }
 
-        thisScope.launch {
-            mutableDelta.collect {
+        thisScope.launch(Dispatchers.IO) {
+            mutableDelta.distinctUntilChanged().collect {
                 movingObject.simulation(it)
             }
         }
