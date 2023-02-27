@@ -11,7 +11,9 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.flowOf
 
 val thisScope = GlobalScope
 fun thisCoroutine(launchSomeShit: () -> Unit) {
@@ -30,7 +32,7 @@ val simulation = thisScope.launch {
  * `mutableDelta` is a MutableStateFlow that stores the elapsed time in seconds since the last update of the game state.
  * It is used to keep track of the current state of the game and is updated in each iteration of the while loop in the `simulation()` function.
  **/
-val mutableDelta = MutableStateFlow(0.0)
+val mutableDelta: Flow<Double> = flowOf()
 
 /**
  * The `simulation()` function is the main logic for the game simulation engine.
