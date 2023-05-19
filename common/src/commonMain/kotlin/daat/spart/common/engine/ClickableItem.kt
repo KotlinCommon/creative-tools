@@ -27,6 +27,7 @@ import daat.spart.common.engine.tools.gu
 import daat.spart.common.engine.type.AdvancedGameItem
 import daat.spart.common.engine.type.Presentation
 import daat.spart.common.engine.type.Size
+import kotlinx.coroutines.DelicateCoroutinesApi
 
 val appButton = ClickableConfiguration(size = Size(width = 16, height = 8), color = Color.Blue)
 val appButtonClickies = ClickableConfiguration(size = Size(size = 5), color = Color.Blue)
@@ -114,6 +115,7 @@ data class ClickableConfiguration(
 )
 
 
+@DelicateCoroutinesApi
 @ExperimentalComposeUiApi
 @Composable
 fun AppButton(

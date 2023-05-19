@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.geometry.Offset
@@ -14,11 +15,14 @@ import androidx.compose.ui.unit.dp
 import daat.spart.common.engine.*
 import daat.spart.common.engine.compose.Controller
 import daat.spart.common.engine.type.Position
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import kotlin.time.times
 
+@DelicateCoroutinesApi
+@ExperimentalComposeUiApi
 @Composable
 fun App() {
     val bounds = Bounds(maxX = 400.dp.value.toDouble(), maxY = 400.dp.value.toDouble())
@@ -33,7 +37,7 @@ fun App() {
         }
 
         thisScope.launch(Dispatchers.IO) {
-            mutableDelta.distinctUntilChanged().collect {
+            mutableDelta.collect {
                 movingObject.simulation(it)
             }
         }

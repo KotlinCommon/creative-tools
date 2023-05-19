@@ -3,12 +3,14 @@ package daat.spart.common.engine.compose
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import daat.spart.common.engine.AppButton
 import daat.spart.common.engine.appButton
 import daat.spart.common.engine.appButtonClickies
 import daat.spart.common.engine.tools.BaseDimensions.Companion.buttonSize
 
+@ExperimentalComposeUiApi
 @Composable
 fun Controller(
     moveUp: () -> Unit,
