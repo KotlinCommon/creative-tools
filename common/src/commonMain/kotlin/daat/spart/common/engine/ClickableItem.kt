@@ -33,7 +33,6 @@ val appButton = ClickableConfiguration(size = Size(width = 16, height = 8), colo
 val appButtonClickies = ClickableConfiguration(size = Size(size = 5), color = Color.Blue)
 val appButtonItem = ClickableConfiguration(size = Size(size = 10), color = Color.Blue)
 
-@ExperimentalComposeUiApi
 @Composable
 private fun ClickableItemPreview() {
     AppPreviewWrapper {
@@ -97,9 +96,11 @@ fun RenderPresentation(presentation: Presentation, itemName: String) {
                     contentDescription = itemName
                 )
             }
+
             is Presentation.Text -> name?.let {
                 AppText(text = it)
             }
+
             is Presentation.Number -> number?.let {
                 AppText(text = it.toString())
             }
@@ -115,8 +116,6 @@ data class ClickableConfiguration(
 )
 
 
-@DelicateCoroutinesApi
-@ExperimentalComposeUiApi
 @Composable
 fun AppButton(
     config: ClickableConfiguration = ClickableConfiguration(),
@@ -134,26 +133,24 @@ fun AppButton(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .onPointerEvent(
-                    eventType = PointerEventType.Press,
-                    onEvent = {
-                        thisCoroutine {
-                            config.onClick()
-                        }
-                    })
-//                .clickable(
-//                    interactionSource = remember { MutableInteractionSource() },
-//                    indication = rememberRipple(),
-//                    enabled = true,
-//                    role = Role.Button,
-//                    onClick = {
-//                        thisCoroutine{
+//                .onPointerEvent(
+//                    eventType = PointerEventType.Press,
+//                    onEvent = {
+//                        thisCoroutine {
 //                            config.onClick()
 //                        }
-//
-//                    }
-//                )
-            ,
+//                    })
+                .clickable(
+                    interactionSource = remember { MutableInteractionSource() },
+                    indication = rememberRipple(),
+                    enabled = true,
+                    role = Role.Button,
+                    onClick = {
+//                        thisCoroutine{
+                        config.onClick()
+//                        }
+                    }
+                ),
             content = {}
         )
         AppText(text = text)

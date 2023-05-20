@@ -10,7 +10,6 @@ import daat.spart.common.engine.appButton
 import daat.spart.common.engine.appButtonClickies
 import daat.spart.common.engine.tools.BaseDimensions.Companion.buttonSize
 
-@ExperimentalComposeUiApi
 @Composable
 fun Controller(
     moveUp: () -> Unit,

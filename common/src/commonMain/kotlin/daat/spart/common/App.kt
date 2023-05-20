@@ -21,8 +21,6 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
 import kotlin.time.times
 
-@DelicateCoroutinesApi
-@ExperimentalComposeUiApi
 @Composable
 fun App() {
     val bounds = Bounds(maxX = 400.dp.value.toDouble(), maxY = 400.dp.value.toDouble())
@@ -36,10 +34,12 @@ fun App() {
             movingObject.render(this)
         }
 
-        thisScope.launch(Dispatchers.IO) {
-            mutableDelta.collect {
-                movingObject.simulation(it)
-            }
+        SimulatedCompose(
+            Modifier
+                .size(bounds.maxX.dp, bounds.maxY.dp)
+                .background(Color.White)
+        ) {
+            movingObject.simulation(it)
         }
 
         Controller(moveUp = { movingObject.move(y = -1000.0) },
@@ -58,8 +58,8 @@ class ObjectWithAcceleration(
     private val radius: Float = 20F
 ) {
     var position = Position(10.0 + radius, 10.0 + radius)
-    private var vx = 0.0
-    private var vy = 0.0
+    private var vx = 1.0
+    private var vy = 1.0
 
     fun simulation(delta: Double) {
         //bounce on collision
@@ -74,8 +74,8 @@ class ObjectWithAcceleration(
     }
 
     fun move(x: Double = 0.0, y: Double = 0.0) {
-        vx+= x
-        vy+= y
+        vx += x
+        vy += y
     }
 
     fun stop() {
