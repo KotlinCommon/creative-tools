@@ -14,7 +14,7 @@ version = "1.0-SNAPSHOT"
 kotlin {
     jvm {
         compilations.all {
-            kotlinOptions.jvmTarget = "16"
+            kotlinOptions.jvmTarget = "1.4"
         }
         withJava()
     }
