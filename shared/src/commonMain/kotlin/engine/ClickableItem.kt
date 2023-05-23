@@ -1,7 +1,6 @@
 package engine
 
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -17,8 +16,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.Role
 import engine.SettingsSingleton.settings
-import engine.compose.AppText
-import engine.composeTools.painterResource
 
 val appButton = ClickableConfiguration(size = Size(width = 16, height = 8), color = Color.Blue)
 val appButtonClickies = ClickableConfiguration(size = Size(size = 5), color = Color.Blue)
