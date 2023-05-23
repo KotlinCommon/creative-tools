@@ -5,11 +5,6 @@
 
 import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.runtime.Composable
-import engine.Time
-import engine.navigation.DestinationManager
-import engine.navigation.NavigationSample
-import engine.navigation.destinationManager
-import engine.navigation.time
 
 object JvmTime : Time {
     override fun now(): Long = System.nanoTime()
@@ -17,9 +12,6 @@ object JvmTime : Time {
 
 @Composable
 fun MainView() {
-    time = JvmTime
-    destinationManager = DestinationManager()
-    NavigationSample()
 }
 
 @Preview

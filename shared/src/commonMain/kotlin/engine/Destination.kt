@@ -1,7 +1,6 @@
-package engine.navigation
+package engine
 
 import androidx.compose.runtime.Composable
-import engine.Time
 
 abstract class Destination {
     abstract var previousDestination: Destination?

@@ -1,11 +1,7 @@
-package engine.navigation
+package engine
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import engine.Time
-
-lateinit var destinationManager: DestinationManager
-lateinit var time: Time
 
 class DestinationManager {
     var destinationStack: MutableState<List<Destination>> = mutableStateOf(listOf(MainMenu()))

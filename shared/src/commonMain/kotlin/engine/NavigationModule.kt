@@ -1,7 +1,8 @@
-package engine.navigation
+package engine
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import destinationManager
 
 @Composable
 fun NavigationModule(content: @Composable (Destination) -> Unit) {
