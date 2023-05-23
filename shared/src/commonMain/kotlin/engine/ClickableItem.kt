@@ -74,6 +74,7 @@ fun RenderPresentation(presentation: Presentation, itemName: String) {
 //                    painter = painterResource(presentation),
 //                    contentDescription = itemName
 //                )
+                print(itemName)
             }
 
             is Presentation.Text -> name?.let {
