@@ -20,7 +20,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = "falling-balls-mpp"
+rootProject.name = "creative-tools"
 
 include(":androidApp")
 include(":shared")
