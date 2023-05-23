@@ -1,4 +1,4 @@
-package daat.spart.common.samples.moving
+package engine
 
 data class Bounds(
     val x: Double = 0.0,
