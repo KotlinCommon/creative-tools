@@ -19,7 +19,7 @@ import androidx.compose.ui.semantics.Role
 import engine.SettingsSingleton.settings
 import engine.compose.AppText
 import engine.composeTools.AppPreviewWrapper
-import engine.composeTools.painterResource
+//import engine.composeTools.painterResource
 import engine.tools.gu
 import engine.type.AdvancedGameItem
 import engine.type.Presentation
@@ -86,11 +86,11 @@ fun RenderPresentation(presentation: Presentation, itemName: String) {
     with(presentation) {
         when (this) {
             is Presentation.Image -> imageId?.let {
-                Image(
+//                Image(
                     //TODO: Fix resource path so it works with both Android, JS and Desktop
-                    painter = painterResource(presentation),
-                    contentDescription = itemName
-                )
+//                    painter = painterResource(presentation),
+//                    contentDescription = itemName
+//                )
             }
 
             is Presentation.Text -> name?.let {
