@@ -6,7 +6,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import daat.spart.common.engine.compose.BaseWrapper
-import daat.spart.common.samples.moving.MovingBallSample
+import daat.spart.common.engine.moving.MovingBallSample
 
 class Game : Destination() {
     override var previousDestination: Destination? = null
