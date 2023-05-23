@@ -5,16 +5,12 @@
 
 import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
-
 object JvmTime : Time {
-    override fun now(): Long = System.nanoTime()
-}
+import engine.navigation.NavigationSample
 
 @Composable
 fun MainView() {
-    val game = remember { Game(JvmTime) }
-    FallingBalls(game)
+    NavigationSample()
 }
 
 @Preview
