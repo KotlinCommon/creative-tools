@@ -4,8 +4,8 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
+import engine.navigation.time
 import engine.type.Position
-import org.jetbrains.skiko.currentNanoTime
 import kotlin.math.sqrt
 
 class ObjectWithAcceleration(
@@ -22,7 +22,7 @@ class ObjectWithAcceleration(
 
         // Update position based on velocity
 
-        println("${currentNanoTime()} vx $vx")
+        println("$time vx $vx")
         println("$delta vy $vy")
         position.x += vx * delta
         position.y += vy * delta

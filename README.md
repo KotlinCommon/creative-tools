@@ -1,4 +1,4 @@
-# Falling Balls game
+# Viking game
 
 Game can run on Android, iOS, desktop or in a browser.
 

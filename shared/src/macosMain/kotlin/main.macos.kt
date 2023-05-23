@@ -18,7 +18,7 @@ object MacosTime : Time {
 
 fun main() {
     NSApplication.sharedApplication()
-    Window("Falling Balls") {
+    Window("Viking") {
         time = MacosTime
         destinationManager = DestinationManager()
         NavigationSample()
