@@ -8,8 +8,3 @@ import engine.type.Presentation
 actual fun painterResource(presentation: Presentation): Painter {
     TODO("Not yet implemented")
 }
-
-@Composable
-actual fun painterResource(presentation: Presentation): Painter {
-    TODO("Not yet implemented")
-}

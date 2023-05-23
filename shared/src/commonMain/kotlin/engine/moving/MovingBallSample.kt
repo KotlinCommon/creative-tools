@@ -11,6 +11,7 @@ import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.unit.dp
 import engine.RenderCompose
 import engine.SimulateCompose
+import engine.Time
 import engine.compose.Controller
 
 @Composable
@@ -20,13 +21,13 @@ fun MovingBallSample() {
     Column {
         Box(modifier = Modifier.onSizeChanged {
 
-        }){
+        }) {
 
         }
         RenderCompose(
             Modifier
                 .size(bounds.maxX.dp, bounds.maxY.dp)
-                .background(Color.White)
+                .background(Color.White),
         ) {
             movingObject.render(this)
         }

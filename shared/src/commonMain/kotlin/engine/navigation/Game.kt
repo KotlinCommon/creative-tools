@@ -5,12 +5,13 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import engine.Time
 import engine.compose.BaseWrapper
 import engine.moving.MovingBallSample
 import engine.navigation.Destination
 import engine.navigation.destinationManager
 
-class Game : Destination() {
+class Game() : Destination() {
     override var previousDestination: Destination? = null
     override var nextDestinations: List<Destination> = listOf()
 

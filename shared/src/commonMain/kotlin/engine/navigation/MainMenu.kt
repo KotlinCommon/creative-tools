@@ -5,6 +5,7 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import engine.Time
 import engine.compose.BaseWrapper
 
 class MainMenu : Destination() {
