@@ -4,8 +4,12 @@
  */
 
 
-import androidx.compose.runtime.remember
 import androidx.compose.ui.window.ComposeUIViewController
+import engine.Time
+import engine.navigation.DestinationManager
+import engine.navigation.NavigationSample
+import engine.navigation.destinationManager
+import engine.navigation.time
 import platform.UIKit.UIViewController
 
 object IosTime : Time {
@@ -13,7 +17,8 @@ object IosTime : Time {
 }
 
 fun MainViewController() : UIViewController = ComposeUIViewController {
-    val game = remember { Game(IosTime) }
-    FallingBalls(game)
+    time = IosTime
+    destinationManager = DestinationManager()
+    NavigationSample()
 }
 

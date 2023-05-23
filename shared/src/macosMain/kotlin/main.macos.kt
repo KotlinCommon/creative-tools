@@ -4,8 +4,11 @@
  */
 
 import androidx.compose.ui.window.Window
-import androidx.compose.runtime.remember
-import androidx.compose.ui.unit.dp
+import engine.Time
+import engine.navigation.DestinationManager
+import engine.navigation.NavigationSample
+import engine.navigation.destinationManager
+import engine.navigation.time
 import platform.AppKit.NSApp
 import platform.AppKit.NSApplication
 
@@ -16,8 +19,9 @@ object MacosTime : Time {
 fun main() {
     NSApplication.sharedApplication()
     Window("Falling Balls") {
-        val game = remember { Game(MacosTime) }
-        FallingBalls(game)
+        time = MacosTime
+        destinationManager = DestinationManager()
+        NavigationSample()
     }
     NSApp?.run()
 }
