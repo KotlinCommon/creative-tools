@@ -1,12 +1,11 @@
-package engine.navigation
+package engine
 
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import engine.Time
-import engine.compose.BaseWrapper
+import destinationManager
 
 class MainMenu : Destination() {
     override var previousDestination: Destination? = null

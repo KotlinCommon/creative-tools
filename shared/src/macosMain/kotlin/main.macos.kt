@@ -4,11 +4,8 @@
  */
 
 import androidx.compose.ui.window.Window
-import engine.Time
-import engine.navigation.DestinationManager
-import engine.navigation.NavigationSample
-import engine.navigation.destinationManager
-import engine.navigation.time
+import androidx.compose.runtime.remember
+import androidx.compose.ui.unit.dp
 import platform.AppKit.NSApp
 import platform.AppKit.NSApplication
 
@@ -19,9 +16,6 @@ object MacosTime : Time {
 fun main() {
     NSApplication.sharedApplication()
     Window("Viking") {
-        time = MacosTime
-        destinationManager = DestinationManager()
-        NavigationSample()
     }
     NSApp?.run()
 }
