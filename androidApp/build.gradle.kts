@@ -18,7 +18,7 @@ kotlin {
 android {
     compileSdk = 33
     defaultConfig {
-        applicationId = "org.jetbrains.FallingBalls"
+        applicationId = "studio.hell.bone.viking"
         minSdk = 26
         targetSdk = 33
         versionCode = 1

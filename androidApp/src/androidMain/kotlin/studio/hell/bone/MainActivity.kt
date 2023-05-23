@@ -1,4 +1,4 @@
-package org.jetbrains.fallingballs
+package studio.hell.bone
 
 import MainView
 import android.os.Bundle
