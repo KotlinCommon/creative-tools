@@ -1,4 +1,4 @@
-package studio.hell.bone
+package studio.hell.bone.viking
 
 import MainView
 import android.os.Bundle

@@ -28,6 +28,7 @@ compose.desktop {
 
             windows {
                 menuGroup = "Compose Examples"
+//                TODO(LOOK INTO THIS SHIT)
                 // see https://wixtoolset.org/documentation/manual/v3/howtos/general/generate_guids.html
                 upgradeUuid = "18159995-d967-4CD2-8885-77BFA97CFA9F"
             }
