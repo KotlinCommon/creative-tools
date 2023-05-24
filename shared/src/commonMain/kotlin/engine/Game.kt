@@ -21,7 +21,7 @@ class Game() : Destination() {
             ), onClick = { destinationManager.previewsDestination() }) {
                 Text("Go Back")
             }
-//            MovingBallSample()
+            MovingBallSample()
         }
     }
 }
