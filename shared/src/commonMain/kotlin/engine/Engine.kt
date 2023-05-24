@@ -31,20 +31,12 @@ private const val FPS = 60
 fun Run(deltaBlock: (Double) -> Unit) {
     LaunchedEffect(Unit) {
         var lastLoopTime = time.now()
-        val optimalTime = ONE_SECOND_IN_NANO / FPS
 
         while (true) {
-            withFrameNanos { it }  // This waits for the next frame.
-            val now = time.now()
-            val updateLength = now - lastLoopTime
-
-            if (updateLength >= optimalTime) {
-                lastLoopTime = now
-                val delta = updateLength / optimalTime.toDouble()
-                deltaBlock(delta)
-
-                val waitTime = (lastLoopTime - time.now() + optimalTime) / ONE_SECOND_IN_NANO
-                delay(max(waitTime, 0L))
+            withFrameNanos { nanos ->
+                val dt = (nanos - lastLoopTime).coerceAtLeast(0)
+                lastLoopTime = nanos
+                deltaBlock(dt.toDouble())
             }
         }
     }
