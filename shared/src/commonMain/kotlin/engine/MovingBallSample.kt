@@ -1,7 +1,5 @@
 package engine
 
-import RenderCompose
-import SimulateCompose
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
