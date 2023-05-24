@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun MovingBallSample() {
-//    val bounds = Bounds(maxX = 400.dp.value.toDouble(), maxY = 400.dp.value.toDouble())
+    val bounds = Bounds(maxX = 400.dp.value.toDouble(), maxY = 400.dp.value.toDouble())
 //    val movingObject = ObjectWithAcceleration(bounds = bounds)
     Column {
         Box(modifier = Modifier.onSizeChanged {
@@ -24,7 +24,7 @@ fun MovingBallSample() {
         }
         RenderCompose(
             Modifier
-//                .size(bounds.maxX.dp, bounds.maxY.dp)
+                .size(bounds.maxX.dp, bounds.maxY.dp)
                 .background(Color.White)
         ) {
 //            movingObject.render(this)
