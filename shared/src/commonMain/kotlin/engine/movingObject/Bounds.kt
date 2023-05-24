@@ -1,4 +1,4 @@
-package engine
+package engine.movingObject
 
 data class Bounds(
     val x: Double = 0.0,

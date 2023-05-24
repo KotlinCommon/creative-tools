@@ -1,6 +1,5 @@
 import androidx.compose.runtime.Composable
-import engine.DestinationManager
-import engine.NavigationSample
+import scenes.NavigationRouting
 
 object AndroidTime : Time {
     override fun now(): Long = System.nanoTime()
@@ -8,7 +7,5 @@ object AndroidTime : Time {
 
 @Composable
 fun MainView() {
-    time = AndroidTime
-    destinationManager = DestinationManager()
-    NavigationSample()
+    NavigationRouting(AndroidTime)
 }

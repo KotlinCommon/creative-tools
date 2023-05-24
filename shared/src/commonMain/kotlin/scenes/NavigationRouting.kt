@@ -1,18 +1,19 @@
-package engine
+package scenes
 
 import Time
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
-import destinationManager
-import time
+import scenes.game.Game
+import scenes.mainMenu.MainMenu
+import engine.navigation.NavigationModule
+import engine.time
 
 @Composable
-fun NavigationSample(_time: Time) {
-    destinationManager =  DestinationManager()
+fun NavigationRouting(_time: Time) {
     time = _time
     MaterialTheme {
-        NavigationModule {
-            when (it) {
+        NavigationModule { destination ->
+            when (destination) {
                 is MainMenu -> {
                     MainMenu().UI()
                 }

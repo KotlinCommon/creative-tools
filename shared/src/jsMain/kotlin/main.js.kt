@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import scenes.NavigationRouting
 
 object JsTime : Time {
     override fun now(): Long = kotlinx.browser.window.performance.now().toLong()
@@ -15,5 +16,6 @@ object JsTime : Time {
 @Composable
 fun MainView() {
     Column(modifier = Modifier.fillMaxSize()) {
+        NavigationRouting(JsTime)
     }
 }

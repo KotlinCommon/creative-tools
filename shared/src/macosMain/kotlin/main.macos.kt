@@ -4,11 +4,9 @@
  */
 
 import androidx.compose.ui.window.Window
-import androidx.compose.runtime.remember
-import androidx.compose.ui.unit.dp
-import engine.NavigationSample
 import platform.AppKit.NSApp
 import platform.AppKit.NSApplication
+import scenes.NavigationRouting
 
 object MacosTime : Time {
     override fun now(): Long = kotlin.system.getTimeNanos()
@@ -17,7 +15,7 @@ object MacosTime : Time {
 fun main() {
     NSApplication.sharedApplication()
     Window("Viking") {
-        NavigationSample()
+        NavigationRouting(MacosTime)
     }
     NSApp?.run()
 }

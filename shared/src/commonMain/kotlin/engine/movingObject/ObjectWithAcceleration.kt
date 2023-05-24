@@ -1,10 +1,10 @@
-package engine
+package engine.movingObject
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
-import time
+import engine.time
 import kotlin.math.sqrt
 
 class ObjectWithAcceleration(
