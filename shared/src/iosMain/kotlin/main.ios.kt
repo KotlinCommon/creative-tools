@@ -4,10 +4,14 @@
  */
 
 import androidx.compose.ui.window.ComposeUIViewController
+import engine.NavigationSample
 import platform.UIKit.UIViewController
 
+object IosTime : Time {
+    override fun now(): Long = kotlin.system.getTimeNanos()
+}
 
 fun MainViewController() : UIViewController = ComposeUIViewController {
-
+    NavigationSample(IosTime)
 }
 

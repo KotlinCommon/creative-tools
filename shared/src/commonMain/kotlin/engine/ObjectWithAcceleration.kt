@@ -9,11 +9,11 @@ import kotlin.math.sqrt
 
 class ObjectWithAcceleration(
     private val bounds: Bounds,
-    private val radius: Float = 20F
+    private val radius: Float = 10F
 ) {
     var position = Position(10.0 + radius, 10.0 + radius)
-    private var vx = 0.0
-    private var vy = 0.0
+    private var vx = 0.1
+    private var vy = 0.1
 
     fun simulation(delta: Double) {
         //bounce on collision
