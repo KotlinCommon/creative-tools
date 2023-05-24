@@ -27,11 +27,11 @@ fun MovingBallSample() {
             movingObject.simulation(it)
         }
 
-//        Controller(moveUp = { movingObject.move(y = -100.0) },
-//            moveDown = { movingObject.move(y = 1.0) },
-//            moveLeft = { movingObject.move(x = -1.0) },
-//            moveRight = { movingObject.move(x = 1.0) },
-//            quitGame = { movingObject.stop() }
-//        )
+        Controller(moveUp = { movingObject.move(y = -100.0) },
+            moveDown = { movingObject.move(y = 1.0) },
+            moveLeft = { movingObject.move(x = -1.0) },
+            moveRight = { movingObject.move(x = 1.0) },
+            quitGame = { movingObject.stop() }
+        )
     }
 }
