@@ -1,15 +1,19 @@
-package engine
+package scenes.mainMenu
 
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
-import destinationManager
+import engine.compose.BaseWrapper
+import engine.navigation.Destination
+import engine.navigation.DestinationManager
+import scenes.game.Game
 
-class Game() : Destination() {
+class MainMenu :
+    Destination() {
     override var previousDestination: Destination? = null
-    override var nextDestinations: List<Destination> = listOf()
+    override var nextDestinations: List<Destination> = listOf(Game())
 
     @Composable
     override fun UI(
@@ -18,10 +22,9 @@ class Game() : Destination() {
         BaseWrapper {
             Button(colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.White,
-            ), onClick = { destinationManager.previewsDestination() }) {
-                Text("Go Back")
+            ), onClick = { DestinationManager.nextDestination(nextDestinations.first()) }) {
+                Text("Go to Game")
             }
-            MovingBallSample()
         }
     }
 }

@@ -1,10 +1,11 @@
-package engine
+package engine.navigation
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import scenes.mainMenu.MainMenu
 
-class DestinationManager {
-    var destinationStack: MutableState<List<Destination>> = mutableStateOf(listOf(MainMenu()))
+object DestinationManager {
+    var destinationStack: MutableState<MutableList<Destination>> = mutableStateOf(mutableListOf(MainMenu()))
 
     fun nextDestination(destination: Destination) {
         addDestination(destination)

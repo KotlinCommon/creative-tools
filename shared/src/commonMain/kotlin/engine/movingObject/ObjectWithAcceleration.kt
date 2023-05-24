@@ -1,19 +1,19 @@
-package engine
+package engine.movingObject
 
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
-import time
+import engine.time
 import kotlin.math.sqrt
 
 class ObjectWithAcceleration(
     private val bounds: Bounds,
-    private val radius: Float = 20F
+    private val radius: Float = 10F
 ) {
     var position = Position(10.0 + radius, 10.0 + radius)
-    private var vx = 0.0
-    private var vy = 0.0
+    private var vx = 0.1
+    private var vy = 0.1
 
     fun simulation(delta: Double) {
         //bounce on collision
