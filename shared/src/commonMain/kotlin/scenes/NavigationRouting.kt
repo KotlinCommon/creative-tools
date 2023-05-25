@@ -19,7 +19,6 @@ fun NavigationRouting(_time: Time) {
                 is MainMenu -> {
                     MainMenu().UI()
                 }
-
                 is Game -> {
                     Game().UI()
                 }
