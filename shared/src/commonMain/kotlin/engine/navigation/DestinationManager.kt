@@ -5,7 +5,15 @@ import androidx.compose.runtime.mutableStateOf
 import scenes.mainMenu.MainMenu
 
 object DestinationManager {
-    var destinationStack: MutableState<MutableList<Destination>> = mutableStateOf(mutableListOf(MainMenu()))
+    private lateinit var destinationStack: MutableState<MutableList<Destination>>
+
+    fun setFirstDestination(destination: Destination) {
+        destinationStack = mutableStateOf(mutableListOf(destination))
+    }
+
+    fun getDestinationStack(): MutableState<MutableList<Destination>> {
+        return destinationStack
+    }
 
     fun nextDestination(destination: Destination) {
         addDestination(destination)
