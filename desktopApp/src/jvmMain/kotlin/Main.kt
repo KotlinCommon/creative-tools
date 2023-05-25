@@ -10,7 +10,7 @@ import androidx.compose.ui.window.singleWindowApplication
 
 fun main() =
     singleWindowApplication(
-        title = "Viking",
+        title = "Ball Control",
         state = WindowState(size = DpSize(800.dp, 800.dp))
     ) {
         MainView()

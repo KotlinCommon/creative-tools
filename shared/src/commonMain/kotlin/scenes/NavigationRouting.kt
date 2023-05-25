@@ -3,8 +3,7 @@ package scenes
 import Time
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
-import scenes.game.Game
-import scenes.mainMenu.MainMenu
+import ballControl.scenes.MainMenu
 import engine.navigation.NavigationModule
 import engine.time
 
@@ -18,9 +17,12 @@ fun NavigationRouting(_time: Time) {
                     MainMenu().UI()
                 }
 
+
+                /*
                 is Game -> {
                     Game().UI()
                 }
+                 */
             }
         }
     }
