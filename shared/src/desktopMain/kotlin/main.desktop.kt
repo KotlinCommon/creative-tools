@@ -5,6 +5,7 @@
 
 import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.runtime.Composable
+import ballControl.scenes.navigationBallControl
 import scenes.NavigationRouting
 
 object JvmTime : Time {
@@ -13,7 +14,8 @@ object JvmTime : Time {
 
 @Composable
 fun MainView() {
-    NavigationRouting(JvmTime)
+    //NavigationRouting(JvmTime) // Viking
+    navigationBallControl(JvmTime) // BallControl
 }
 
 @Preview

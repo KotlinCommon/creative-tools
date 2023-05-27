@@ -22,7 +22,7 @@ class MainMenu :
 
         BaseWrapper {
             Button(colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color.Black,
+                backgroundColor = Color.White,
             ), onClick = { DestinationManager.nextDestination(nextDestinations.first()) }) {
                 Text("Go to Ball")
             }

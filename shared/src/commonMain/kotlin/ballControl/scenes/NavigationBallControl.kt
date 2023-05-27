@@ -1,4 +1,4 @@
-package scenes
+package ballControl.scenes
 
 import Time
 import androidx.compose.material.MaterialTheme
@@ -6,11 +6,9 @@ import androidx.compose.runtime.Composable
 import engine.navigation.DestinationManager
 import engine.navigation.NavigationModule
 import engine.time
-import scenes.game.Game
-import scenes.mainMenu.MainMenu
 
 @Composable
-fun NavigationRouting(_time: Time) {
+fun navigationBallControl(_time: Time) {
     time = _time
     DestinationManager.setFirstDestination(MainMenu())
     MaterialTheme {
@@ -19,6 +17,7 @@ fun NavigationRouting(_time: Time) {
                 is MainMenu -> {
                     MainMenu().UI()
                 }
+
                 is Game -> {
                     Game().UI()
                 }

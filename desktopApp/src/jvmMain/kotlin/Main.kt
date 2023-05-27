@@ -8,10 +8,23 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.singleWindowApplication
 
-fun main() =
-    singleWindowApplication(
-        title = "Ball Control",
-        state = WindowState(size = DpSize(800.dp, 800.dp))
-    ) {
-        MainView()
-    }
+
+fun main() = ballControl
+
+
+var viking = singleWindowApplication(
+    title = "Viking",
+    state = WindowState(size = DpSize(800.dp, 800.dp))
+) {
+    MainView()
+}
+
+var ballControl = singleWindowApplication(
+    title = "ballControl",
+    state = WindowState(size = DpSize(800.dp, 800.dp))
+) {
+    MainView()
+}
+
+
+
