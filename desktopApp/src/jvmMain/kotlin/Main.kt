@@ -11,12 +11,13 @@ import androidx.compose.ui.window.singleWindowApplication
 
 enum class Configurations(val title: String,val windowState : WindowState){
     Viking("Viking", WindowState(size = DpSize(800.dp, 800.dp))),
-    BallControl("Ball Control", WindowState(size = DpSize(800.dp, 800.dp))),
+    BallControl("Ball Control", WindowState(size = DpSize(1240.dp, 800.dp))),
 }
 
 fun main() = singleWindowApplication(
     title = Configurations.BallControl.title,
-    state = Configurations.BallControl.windowState
+    state = Configurations.BallControl.windowState,
+    resizable = false
 ) {
     MainView()
 }
