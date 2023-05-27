@@ -12,7 +12,6 @@ import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import kotlinx.coroutines.delay
-import kotlin.math.max
 
 
 //This guy works better as a global variable
@@ -21,8 +20,9 @@ lateinit var time: Time
 /**
  * Constants for time calculations.
  */
-private const val ONE_SECOND_IN_NANO = 1_000_000_000L
-private const val FPS = 60
+private const val oneSecondInNano = 1_000_000_000L
+private const val fps = 60
+const val desiredMillisPerFrame = oneSecondInNano / fps
 
 /**
  * Runs the provided block of code at a regular interval determined by the desired FPS.
@@ -38,6 +38,8 @@ fun Run(deltaBlock: (Double) -> Unit) {
                 lastLoopTime = nanos
                 deltaBlock(dt.toDouble())
             }
+
+            delay(desiredMillisPerFrame)
         }
     }
 }
