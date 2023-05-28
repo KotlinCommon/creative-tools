@@ -75,7 +75,6 @@ fun Run(deltaBlock: (Double, Int) -> Unit) {
 /**
  * Renders the provided content on a Canvas, updating it at a regular interval.
  */
-@OptIn(ExperimentalTextApi::class)
 @Composable
 fun RenderCompose(modifier: Modifier = Modifier, content: DrawScope.(Double) -> Unit) {
     var state by remember { mutableStateOf(0.0) }
@@ -92,7 +91,6 @@ fun RenderCompose(modifier: Modifier = Modifier, content: DrawScope.(Double) -> 
         if (showFPS) {
             drawFPS(fontFamily, currentFPS)
         }
-
         content(state)
 
     }
@@ -118,28 +116,7 @@ private fun DrawScope.drawFPS(fontFamily: FontFamily.Resolver, currentFPS: Int) 
  */
 @Composable
 fun SimulateCompose(simulation: (Double) -> Unit) {
-    val simulationScope = rememberCoroutineScope { GlobalScope.coroutineContext }
-    var state by remember { mutableStateOf(0.0) }
-
-    LaunchedEffect(Unit) {
-        simulationScope.launch {
-            var lastLoopTime = time.now()
-            while (true) {
-                val dt = (time.now() - lastLoopTime).coerceAtLeast(0)
-                lastLoopTime = time.now()
-                withContext(Dispatchers.Unconfined) {
-                    state = dt.toDouble()
-                }
-                delay(desiredMillisPerFrame)
-            }
-        }
+    Run { delta, _ ->
+        simulation(delta)
     }
-
-    DisposableEffect(Unit) {
-        onDispose {
-            simulationScope.cancel()
-        }
-    }
-
-    simulation(state)
 }
