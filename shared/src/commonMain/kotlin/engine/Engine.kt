@@ -2,18 +2,35 @@ package engine
 
 import Time
 import androidx.compose.foundation.Canvas
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
+import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color.Companion.Green
 import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.platform.LocalFontFamilyResolver
-import androidx.compose.ui.text.*
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.ExperimentalTextApi
+import androidx.compose.ui.text.TextMeasurer
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 //This guy works better as a global variable
@@ -31,20 +48,29 @@ const val desiredMillisPerFrame = oneSecondInNano / fps
  */
 @Composable
 fun Run(deltaBlock: (Double, Int) -> Unit) {
+    val simulationScope = rememberCoroutineScope { GlobalScope.coroutineContext }
+
     LaunchedEffect(Unit) {
-        var lastLoopTime = time.now()
-        while (true) {
-            withFrameNanos { nanos ->
-                val dt = (nanos - lastLoopTime).coerceAtLeast(0)
-                lastLoopTime = nanos
-                val fps = (if (dt > 0) 1_000_000_000.0 / dt else Double.MAX_VALUE).toInt()
-                deltaBlock(dt.toDouble(), fps)
+        simulationScope.launch {
+            var lastLoopTime = time.now()
+            while (true) {
+                withFrameNanos { nanos ->
+                    val dt = (nanos - lastLoopTime).coerceAtLeast(0)
+                    lastLoopTime = nanos
+                    val fps = (if (dt > 0) 1_000_000_000.0 / dt else Double.MAX_VALUE).toInt()
+                    deltaBlock(dt.toDouble(), fps)
+                }
+                delay(desiredMillisPerFrame)
             }
-            delay(desiredMillisPerFrame)
+        }
+    }
+
+    DisposableEffect(Unit) {
+        onDispose {
+            simulationScope.cancel()
         }
     }
 }
-
 
 /**
  * Renders the provided content on a Canvas, updating it at a regular interval.
@@ -92,10 +118,27 @@ private fun DrawScope.drawFPS(fontFamily: FontFamily.Resolver, currentFPS: Int) 
  */
 @Composable
 fun SimulateCompose(simulation: (Double) -> Unit) {
+    val simulationScope = rememberCoroutineScope { GlobalScope.coroutineContext }
     var state by remember { mutableStateOf(0.0) }
 
-    Run { delta, _ ->
-        state = delta
+    LaunchedEffect(Unit) {
+        simulationScope.launch {
+            var lastLoopTime = time.now()
+            while (true) {
+                val dt = (time.now() - lastLoopTime).coerceAtLeast(0)
+                lastLoopTime = time.now()
+                withContext(Dispatchers.Unconfined) {
+                    state = dt.toDouble()
+                }
+                delay(desiredMillisPerFrame)
+            }
+        }
+    }
+
+    DisposableEffect(Unit) {
+        onDispose {
+            simulationScope.cancel()
+        }
     }
 
     simulation(state)
