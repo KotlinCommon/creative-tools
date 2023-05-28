@@ -1,4 +1,4 @@
-package scenes.game
+package mainSample.scenes.game
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column

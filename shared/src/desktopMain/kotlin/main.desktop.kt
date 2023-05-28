@@ -6,7 +6,7 @@
 import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.runtime.Composable
 import ballControl.scenes.navigationBallControl
-import scenes.NavigationRouting
+import mainSample.scenes.NavigationRouting
 
 object JvmTime : Time {
     override fun now(): Long = System.nanoTime()
@@ -14,10 +14,7 @@ object JvmTime : Time {
 
 @Composable
 fun MainView() {
-    when(selectedProject){
-        Projects.MainSample -> NavigationRouting(JvmTime)
-        Projects.BallControl -> navigationBallControl(JvmTime)
-    }
+    PlaySelectedProject(JvmTime)
 }
 
 @Preview

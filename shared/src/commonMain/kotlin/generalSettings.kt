@@ -1,1 +1,1 @@
-val showFPS = true
+const val showFPS = true

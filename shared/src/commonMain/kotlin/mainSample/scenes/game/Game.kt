@@ -1,4 +1,4 @@
-package scenes.game
+package mainSample.scenes.game
 
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults

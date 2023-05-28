@@ -1,4 +1,4 @@
-package scenes.mainMenu
+package mainSample.scenes.mainMenu
 
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -8,7 +8,7 @@ import androidx.compose.ui.graphics.Color
 import engine.compose.BaseWrapper
 import engine.navigation.Destination
 import engine.navigation.DestinationManager
-import scenes.game.Game
+import mainSample.scenes.game.Game
 
 class MainMenu :
     Destination() {

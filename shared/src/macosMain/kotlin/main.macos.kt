@@ -4,10 +4,8 @@
  */
 
 import androidx.compose.ui.window.Window
-import ballControl.scenes.navigationBallControl
 import platform.AppKit.NSApp
 import platform.AppKit.NSApplication
-import scenes.NavigationRouting
 
 object MacosTime : Time {
     override fun now(): Long = kotlin.system.getTimeNanos()
@@ -16,10 +14,7 @@ object MacosTime : Time {
 fun main() {
     NSApplication.sharedApplication()
     Window("Viking") {
-        when(selectedProject){
-            Projects.MainSample -> NavigationRouting(MacosTime)
-            Projects.BallControl -> navigationBallControl(MacosTime)
-        }
+        PlaySelectedProject(MacosTime)
     }
     NSApp?.run()
 }

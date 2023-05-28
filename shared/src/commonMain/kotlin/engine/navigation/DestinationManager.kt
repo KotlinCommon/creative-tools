@@ -2,7 +2,7 @@ package engine.navigation
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import scenes.mainMenu.MainMenu
+import mainSample.scenes.mainMenu.MainMenu
 
 object DestinationManager {
     private lateinit var destinationStack: MutableState<MutableList<Destination>>

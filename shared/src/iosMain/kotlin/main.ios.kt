@@ -6,16 +6,13 @@
 import androidx.compose.ui.window.ComposeUIViewController
 import ballControl.scenes.navigationBallControl
 import platform.UIKit.UIViewController
-import scenes.NavigationRouting
+import mainSample.scenes.NavigationRouting
 
 object IosTime : Time {
     override fun now(): Long = kotlin.system.getTimeNanos()
 }
 
 fun MainViewController() : UIViewController = ComposeUIViewController {
-    when(selectedProject){
-        Projects.MainSample -> NavigationRouting(IosTime)
-        Projects.BallControl -> navigationBallControl(IosTime)
-    }
+    PlaySelectedProject(IosTime)
 }
 

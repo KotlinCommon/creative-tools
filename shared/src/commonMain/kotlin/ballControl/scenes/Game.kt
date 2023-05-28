@@ -8,7 +8,7 @@ import androidx.compose.ui.graphics.Color
 import engine.compose.BaseWrapper
 import engine.navigation.Destination
 import engine.navigation.DestinationManager
-import scenes.game.MovingBallSample
+import mainSample.scenes.game.MovingBallSample
 
 class Game : Destination() {
     override var previousDestination: Destination? = null

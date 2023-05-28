@@ -5,7 +5,7 @@
 
 import androidx.compose.runtime.Composable
 import ballControl.scenes.navigationBallControl
-import scenes.NavigationRouting
+import mainSample.scenes.NavigationRouting
 
 object JsTime : Time {
     override fun now(): Long = kotlinx.browser.window.performance.now().toLong()
@@ -13,8 +13,5 @@ object JsTime : Time {
 
 @Composable
 fun MainView() {
-    when(selectedProject){
-        Projects.MainSample -> NavigationRouting(JsTime)
-        Projects.BallControl -> navigationBallControl(JsTime)
-    }
+    PlaySelectedProject(JsTime)
 }
