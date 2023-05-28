@@ -1,4 +1,3 @@
 package ballControl
 
-class BallControl {
-}
+class BallControl

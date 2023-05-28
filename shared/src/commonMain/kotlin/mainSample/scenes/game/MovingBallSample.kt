@@ -20,7 +20,6 @@ import engine.RenderCompose
 import engine.SimulateCompose
 import engine.compose.Controller
 
-@OptIn(ExperimentalTextApi::class)
 @Composable
 fun MovingBallSample() {
     val bounds = Bounds(maxX = 100.dp.value.toDouble(), maxY = 100.dp.value.toDouble())
