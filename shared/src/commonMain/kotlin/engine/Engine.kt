@@ -87,7 +87,16 @@ fun RenderCompose(modifier: Modifier = Modifier, content: DrawScope.(Double) -> 
             drawFPS(fontFamily, currentFPS)
         }
         content(state)
+    }
+}
 
+/**
+ * Runs the provided simulation at a regular interval.
+ */
+@Composable
+fun SimulateCompose(simulation: (Double) -> Unit) {
+    Run { delta, _ ->
+        simulation(delta)
     }
 }
 
@@ -104,14 +113,4 @@ private fun DrawScope.drawFPS(fontFamily: FontFamily.Resolver, currentFPS: Int) 
         size = Size(height = 35f, width = 240f),
         text = AnnotatedString("Current FPS: $currentFPS"),
     )
-}
-
-/**
- * Runs the provided simulation at a regular interval.
- */
-@Composable
-fun SimulateCompose(simulation: (Double) -> Unit) {
-    Run { delta, _ ->
-        simulation(delta)
-    }
 }
