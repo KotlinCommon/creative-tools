@@ -1,6 +1,6 @@
 package engine
 
-import Time
+
 import androidx.compose.foundation.Canvas
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -25,27 +25,25 @@ import androidx.compose.ui.text.drawText
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-
-
-//This guy works better as a global variable
-lateinit var time: Time
+import showFPS
+import time
 
 /**
  * Constants for time calculations.
  */
 private const val oneSecondInNano = 1_000L
 private const val fps = 80
-const val desiredMillisPerFrame = oneSecondInNano / fps
+private const val desiredMillisPerFrame = oneSecondInNano / fps
 
 /**
  * Runs the provided block of code at a regular interval determined by the desired FPS.
  */
+@OptIn(DelicateCoroutinesApi::class)
 @Composable
 fun Run(deltaBlock: (Double, Int) -> Unit) {
     val simulationScope = rememberCoroutineScope { GlobalScope.coroutineContext }
@@ -80,7 +78,6 @@ fun RenderCompose(modifier: Modifier = Modifier, content: DrawScope.(Double) -> 
     var state by remember { mutableStateOf(0.0) }
     var currentFPS = 0
     val fontFamily = LocalFontFamilyResolver.current
-    val showFPS = true
 
     Run { delta, fps ->
         state = delta

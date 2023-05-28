@@ -14,8 +14,8 @@ object IosTime : Time {
 
 fun MainViewController() : UIViewController = ComposeUIViewController {
     when(selectedProject){
-        Projects.BallControl -> NavigationRouting(IosTime)
-        Projects.MainSample -> navigationBallControl(IosTime)
+        Projects.MainSample -> NavigationRouting(IosTime)
+        Projects.BallControl -> navigationBallControl(IosTime)
     }
 }
 

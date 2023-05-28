@@ -17,8 +17,8 @@ fun main() {
     NSApplication.sharedApplication()
     Window("Viking") {
         when(selectedProject){
-            Projects.BallControl -> NavigationRouting(MacosTime)
-            Projects.MainSample -> navigationBallControl(MacosTime)
+            Projects.MainSample -> NavigationRouting(MacosTime)
+            Projects.BallControl -> navigationBallControl(MacosTime)
         }
     }
     NSApp?.run()

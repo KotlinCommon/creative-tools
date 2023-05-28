@@ -14,7 +14,7 @@ object JsTime : Time {
 @Composable
 fun MainView() {
     when(selectedProject){
-        Projects.BallControl -> NavigationRouting(JsTime)
-        Projects.MainSample -> navigationBallControl(JsTime)
+        Projects.MainSample -> NavigationRouting(JsTime)
+        Projects.BallControl -> navigationBallControl(JsTime)
     }
 }

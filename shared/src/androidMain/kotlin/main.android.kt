@@ -9,7 +9,7 @@ object AndroidTime : Time {
 @Composable
 fun MainView() {
     when(selectedProject){
-        Projects.BallControl -> NavigationRouting(AndroidTime)
-        Projects.MainSample -> navigationBallControl(AndroidTime)
+        Projects.MainSample -> NavigationRouting(AndroidTime)
+        Projects.BallControl -> navigationBallControl(AndroidTime)
     }
 }
