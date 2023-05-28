@@ -1,4 +1,4 @@
-package mainSample.scenes.mainMenu
+package mainSample.scenes.gameOver
 
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -8,20 +8,30 @@ import androidx.compose.ui.graphics.Color
 import engine.compose.BaseWrapper
 import engine.navigation.Destination
 import engine.navigation.DestinationManager
+import engine.navigation.DestinationManager.clearStack
 import mainSample.scenes.game.Game
+import mainSample.scenes.mainMenu.MainMenu
 
-class MainMenu :
-    Destination() {
-
+class GameOver(val score: Int) : Destination() {
     @Composable
     override fun UI(
         //a state will come here most probably
     ) {
         BaseWrapper {
+            Text("Your score was $score")
+            Button(colors = ButtonDefaults.buttonColors(
+                backgroundColor = Color.White,
+            ), onClick = {
+                clearStack()
+                DestinationManager.previewsDestination(MainMenu())
+            }) {
+                Text("To menu")
+            }
+
             Button(colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.White,
             ), onClick = { DestinationManager.nextDestination(Game()) }) {
-                Text("Go to Game")
+                Text("Restart")
             }
         }
     }

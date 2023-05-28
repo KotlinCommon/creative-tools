@@ -2,7 +2,6 @@ package engine.navigation
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
-import mainSample.scenes.mainMenu.MainMenu
 
 object DestinationManager {
     private lateinit var destinationStack: MutableState<MutableList<Destination>>
@@ -13,6 +12,10 @@ object DestinationManager {
 
     fun getDestinationStack(): MutableState<MutableList<Destination>> {
         return destinationStack
+    }
+
+    fun clearStack(){
+        destinationStack.value.clear()
     }
 
     fun nextDestination(destination: Destination) {

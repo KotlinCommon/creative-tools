@@ -11,9 +11,6 @@ import engine.navigation.DestinationManager
 import mainSample.scenes.game.MovingBallSample
 
 class Game : Destination() {
-    override var previousDestination: Destination? = null
-    override var nextDestinations: List<Destination> = listOf()
-
     @Composable
     override fun UI(
         //a state will come here most probably

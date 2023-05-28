@@ -12,8 +12,6 @@ import mainSample.scenes.game.Game
 
 class MainMenu :
     Destination() {
-    override var previousDestination: Destination? = null
-    override var nextDestinations: List<Destination> = listOf(Game())
 
     @Composable
     override fun UI(
@@ -23,7 +21,7 @@ class MainMenu :
         BaseWrapper {
             Button(colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.White,
-            ), onClick = { DestinationManager.nextDestination(nextDestinations.first()) }) {
+            ), onClick = { DestinationManager.nextDestination(Game()) }) {
                 Text("Go to Ball")
             }
         }

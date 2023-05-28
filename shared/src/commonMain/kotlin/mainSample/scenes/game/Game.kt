@@ -10,8 +10,6 @@ import engine.navigation.Destination
 import engine.navigation.DestinationManager
 
 class Game : Destination() {
-    override var previousDestination: Destination? = null
-    override var nextDestinations: List<Destination> = listOf()
 
     @Composable
     override fun UI(
