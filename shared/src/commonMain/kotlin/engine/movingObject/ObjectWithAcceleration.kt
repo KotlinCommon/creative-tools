@@ -4,7 +4,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
-import time
+import engine.movement.simulateMovement
 import kotlin.math.sqrt
 
 class ObjectWithAcceleration(
@@ -21,10 +21,14 @@ class ObjectWithAcceleration(
 
         // Update position based on velocity
 
-        println("$time vx $vx")
-        println("$delta vy $vy")
-        position.x += vx * delta
-        position.y += vy * delta
+        simulateMovement(
+            position = position,
+            vx = vx,
+            vy = vy,
+            delta = delta,
+            bounds = bounds,
+            radius = radius
+        )
     }
 
     fun move(x: Double = 0.0, y: Double = 0.0) {

@@ -30,8 +30,6 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import showFPS
-import time
 
 /**
  * Constants for time calculations.

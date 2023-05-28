@@ -5,7 +5,7 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import engine.navigation.DestinationManager
 import engine.navigation.NavigationModule
-import time
+import engine.time
 
 @Composable
 fun navigationBallControl(_time: Time) {

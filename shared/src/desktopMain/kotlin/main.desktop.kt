@@ -5,8 +5,7 @@
 
 import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.runtime.Composable
-import ballControl.scenes.navigationBallControl
-import mainSample.scenes.NavigationRouting
+import engine.PlaySelectedProject
 
 object JvmTime : Time {
     override fun now(): Long = System.nanoTime()

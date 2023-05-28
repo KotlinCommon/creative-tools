@@ -4,9 +4,8 @@
  */
 
 import androidx.compose.ui.window.ComposeUIViewController
-import ballControl.scenes.navigationBallControl
+import engine.PlaySelectedProject
 import platform.UIKit.UIViewController
-import mainSample.scenes.NavigationRouting
 
 object IosTime : Time {
     override fun now(): Long = kotlin.system.getTimeNanos()

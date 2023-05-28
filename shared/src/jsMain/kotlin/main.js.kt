@@ -4,8 +4,7 @@
  */
 
 import androidx.compose.runtime.Composable
-import ballControl.scenes.navigationBallControl
-import mainSample.scenes.NavigationRouting
+import engine.PlaySelectedProject
 
 object JsTime : Time {
     override fun now(): Long = kotlinx.browser.window.performance.now().toLong()

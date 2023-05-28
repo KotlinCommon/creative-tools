@@ -4,6 +4,7 @@
  */
 
 import androidx.compose.ui.window.Window
+import engine.PlaySelectedProject
 import platform.AppKit.NSApp
 import platform.AppKit.NSApplication
 
