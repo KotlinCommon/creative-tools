@@ -4,6 +4,7 @@
  */
 
 import androidx.compose.ui.window.ComposeUIViewController
+import ballControl.scenes.navigationBallControl
 import platform.UIKit.UIViewController
 import scenes.NavigationRouting
 
@@ -12,6 +13,9 @@ object IosTime : Time {
 }
 
 fun MainViewController() : UIViewController = ComposeUIViewController {
-    NavigationRouting(IosTime)
+    when(selectedProject){
+        Projects.BallControl -> NavigationRouting(IosTime)
+        Projects.MainSample -> navigationBallControl(IosTime)
+    }
 }
 

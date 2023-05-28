@@ -4,6 +4,7 @@
  */
 
 import androidx.compose.ui.window.Window
+import ballControl.scenes.navigationBallControl
 import platform.AppKit.NSApp
 import platform.AppKit.NSApplication
 import scenes.NavigationRouting
@@ -15,7 +16,10 @@ object MacosTime : Time {
 fun main() {
     NSApplication.sharedApplication()
     Window("Viking") {
-        NavigationRouting(MacosTime)
+        when(selectedProject){
+            Projects.BallControl -> NavigationRouting(MacosTime)
+            Projects.MainSample -> navigationBallControl(MacosTime)
+        }
     }
     NSApp?.run()
 }

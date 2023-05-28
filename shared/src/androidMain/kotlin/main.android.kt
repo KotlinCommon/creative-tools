@@ -1,4 +1,5 @@
 import androidx.compose.runtime.Composable
+import ballControl.scenes.navigationBallControl
 import scenes.NavigationRouting
 
 object AndroidTime : Time {
@@ -7,5 +8,8 @@ object AndroidTime : Time {
 
 @Composable
 fun MainView() {
-    NavigationRouting(AndroidTime)
+    when(selectedProject){
+        Projects.BallControl -> NavigationRouting(AndroidTime)
+        Projects.MainSample -> navigationBallControl(AndroidTime)
+    }
 }

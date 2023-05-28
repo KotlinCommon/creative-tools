@@ -14,8 +14,10 @@ object JvmTime : Time {
 
 @Composable
 fun MainView() {
-    //NavigationRouting(JvmTime) // Viking
-    navigationBallControl(JvmTime) // BallControl
+    when(selectedProject){
+        Projects.BallControl -> NavigationRouting(JvmTime)
+        Projects.MainSample -> navigationBallControl(JvmTime)
+    }
 }
 
 @Preview
