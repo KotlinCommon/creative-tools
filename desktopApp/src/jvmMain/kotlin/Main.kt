@@ -8,15 +8,29 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.material.Checkbox
 import androidx.compose.material.Text
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.WindowPlacement
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
 
+@OptIn(ExperimentalComposeUiApi::class)
 fun main() = application {
     val state = rememberWindowState(placement = WindowPlacement.Maximized)
     Window(onCloseRequest = ::exitApplication, state) {
-        Column {
+        Column(modifier = Modifier.onKeyEvent {
+            if (it.key == Key.A) {
+                println("A is pressed")
+                true
+            } else {
+                // let other handlers receive this event
+                false
+            }
+        }) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Checkbox(
                     state.placement == WindowPlacement.Fullscreen,
