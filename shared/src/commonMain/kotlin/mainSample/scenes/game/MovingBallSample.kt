@@ -3,27 +3,15 @@ package mainSample.scenes.game
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
-import androidx.compose.ui.input.key.Key
-import androidx.compose.ui.input.key.isCtrlPressed
-import androidx.compose.ui.input.key.key
-import androidx.compose.ui.input.key.onKeyEvent
-import androidx.compose.ui.platform.LocalFontFamilyResolver
-import androidx.compose.ui.text.*
-import androidx.compose.ui.unit.Density
-import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import engine.movingObject.Bounds
-import engine.movingObject.ObjectWithAcceleration
 import engine.RenderCompose
 import engine.SimulateCompose
 import engine.compose.Controller
+import engine.movingObject.Bounds
+import engine.movingObject.ObjectWithAcceleration
 
 @Composable
 fun MovingBallSample() {
