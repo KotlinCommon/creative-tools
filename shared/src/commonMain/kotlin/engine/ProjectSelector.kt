@@ -2,10 +2,10 @@ package engine
 
 import Time
 import androidx.compose.runtime.Composable
-import ballControl.scenes.navigationBallControl
+import ballControl.navigationBallControl
 import mainSample.scenes.NavigationRouting
 
-val selectedProject = Projects.MainSample
+val selectedProject = Projects.BallControl
 enum class Projects{
     MainSample,
     BallControl
