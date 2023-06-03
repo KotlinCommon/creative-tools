@@ -76,6 +76,7 @@ class MainMenu : Destination() {
                         ), onClick = { DestinationManager.nextDestination(Credits()) }) {
                         createText("Credits", textSize)
                     }
+                    //TODO: Create Exit if desktop .. For mobile nor make a sense
                     Button(
                         modifier = buttonsModifier,
                         colors = ButtonDefaults.buttonColors(
