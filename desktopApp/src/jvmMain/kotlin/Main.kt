@@ -8,22 +8,42 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.material.Button
 import androidx.compose.material.Checkbox
 import androidx.compose.material.Text
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.BlendMode.Companion.Screen
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
-import androidx.compose.ui.window.Window
-import androidx.compose.ui.window.WindowPlacement
-import androidx.compose.ui.window.application
-import androidx.compose.ui.window.rememberWindowState
+import androidx.compose.ui.unit.DpSize
+import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.IntSize
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.*
+import engine.movingObject.Position
+import kotlinx.coroutines.delay
+import java.awt.Toolkit
 
 @OptIn(ExperimentalComposeUiApi::class)
 fun main() = application {
-    val state = rememberWindowState(placement = WindowPlacement.Maximized)
+
+    val screenSize = Toolkit.getDefaultToolkit().screenSize
+    val state = rememberWindowState(
+        placement = WindowPlacement.Floating,
+        position = WindowPosition(Alignment.CenterStart),
+        size = DpSize(screenSize.width.dp, screenSize.height.dp)
+    )
+
     val gameTitle = "Ball Control"
-    Window(onCloseRequest = ::exitApplication, state = state, resizable = false, title = gameTitle) {
+
+    Window(
+        onCloseRequest = ::exitApplication,
+        state = state,
+        resizable = false,
+        alwaysOnTop = true,
+        title = gameTitle
+    ) {
         MainView()
     }
 }
