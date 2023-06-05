@@ -11,8 +11,10 @@ import engine.navigation.DestinationManager
 import engine.navigation.NavigationModule
 import nexus.authentication.signin.SignIn
 import nexus.authentication.signup.SignUp
-import nexus.home.NavigationRoutingFeed
 import nexus.home.feed.Feed
+import nexus.home.inviteUser.InviteUser
+import nexus.home.profile.Profile
+import nexus.home.userDetail.UserDetail
 
 object UserSettings {
     val isSessionActive = false
@@ -45,12 +47,25 @@ fun NavigationRoutingEntry() {
                     is SignIn -> {
                         SignIn().UI()
                     }
+
                     is SignUp -> {
                         SignUp().UI()
                     }
 
                     is Feed -> {
-                        NavigationRoutingFeed()
+                        Feed().UI()
+                    }
+
+                    is InviteUser -> {
+                        InviteUser().UI()
+                    }
+
+                    is Profile -> {
+                        Profile().UI()
+                    }
+
+                    is UserDetail -> {
+                        UserDetail().UI()
                     }
                 }
             }
