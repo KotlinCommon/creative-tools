@@ -15,6 +15,8 @@ import nexus.home.feed.Feed
 import nexus.home.inviteUser.InviteUser
 import nexus.home.profile.Profile
 import nexus.home.userDetail.UserDetail
+import nexus.home.userDetail.createProtocol.CreateProtocol
+import nexus.home.userDetail.protocolDetail.ProtocolDetail
 
 object UserSettings {
     val isSessionActive = false
@@ -66,6 +68,14 @@ fun NavigationRoutingEntry() {
 
                     is UserDetail -> {
                         UserDetail().UI()
+                    }
+
+                    is CreateProtocol -> {
+                        CreateProtocol().UI()
+                    }
+
+                    is ProtocolDetail -> {
+                        ProtocolDetail().UI()
                     }
                 }
             }
