@@ -20,7 +20,7 @@ class MainMenu :
         BaseWrapper {
             Button(colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.White,
-            ), onClick = { DestinationManager.nextDestination(Game()) }) {
+            ), onClick = { DestinationManager.goTo(Game()) }) {
                 Text("Go to Game")
             }
         }

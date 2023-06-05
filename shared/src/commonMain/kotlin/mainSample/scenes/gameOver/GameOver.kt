@@ -23,14 +23,14 @@ class GameOver(val score: Int) : Destination() {
                 backgroundColor = Color.White,
             ), onClick = {
                 clearStack()
-                DestinationManager.previewsDestination(MainMenu())
+                DestinationManager.clearAndGoTo(MainMenu())
             }) {
                 Text("To menu")
             }
 
             Button(colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.White,
-            ), onClick = { DestinationManager.nextDestination(Game()) }) {
+            ), onClick = { DestinationManager.popAndGoTo(Game()) }) {
                 Text("Restart")
             }
         }

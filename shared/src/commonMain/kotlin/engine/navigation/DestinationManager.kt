@@ -4,6 +4,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 
 object DestinationManager {
+    val clearCircularDestination = false
     private lateinit var destinationStack: MutableState<MutableList<Destination>>
 
     fun setFirstDestination(destination: Destination) {
@@ -18,8 +19,24 @@ object DestinationManager {
         destinationStack.value.clear()
     }
 
-    fun nextDestination(destination: Destination) {
+    fun clearAndGoTo(destination: Destination) {
+        clearStack()
         addDestination(destination)
+    }
+    fun popAndGoTo(destination: Destination) {
+        destinationStack.value.removeLast()
+        addDestination(destination)
+    }
+    fun goTo(destination: Destination) {
+        when(clearCircularDestination){
+            true -> {
+                destinationStack.value.removeLast()
+                destinationStack.value.removeLast()
+                addDestination(destination)
+            }
+            false -> addDestination(destination)
+        }
+
     }
 
     fun previewsDestination(destination: Destination? = null) {
