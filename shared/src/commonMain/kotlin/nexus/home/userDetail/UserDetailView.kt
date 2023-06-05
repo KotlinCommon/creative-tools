@@ -14,7 +14,7 @@ class UserDetail : Destination() {
         //a state will come here most probably
     ) {
         BaseWrapper {
-            Text("Profile", color = Color.White)
+            Text("User Detail", color = Color.White)
             Button(
                 onClick = { DestinationManager.previewsDestination() }
             ) {
