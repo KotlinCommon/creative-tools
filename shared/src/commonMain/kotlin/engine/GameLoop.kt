@@ -23,6 +23,8 @@ private const val oneSecondInNano = 1_000_000_000.0
 private const val fps = 60.0
 private const val desiredMillisPerFrame = oneSecondInNano / fps
 
+expect fun platformSleep(millis: Long)
+
 /**
  * Runs the provided block of code at a regular interval determined by the desired FPS.
  */
