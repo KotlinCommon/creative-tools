@@ -4,25 +4,23 @@ import Time
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
+import flashLight.NavigationRoutingFlashLight
 import kotlinx.coroutines.Runnable
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.internal.synchronized
 import mainSample.scenes.NavigationRouting
 import nexus.NavigationRoutingEntry
-import kotlin.math.max
 import kotlin.random.Random
 
-val selectedProject = Projects.DOOM
+val selectedProject = Projects.CarLights
 
 enum class Projects {
     MainSample,
     Nexus,
+    CarLights,
     DOOM;
 }
 
@@ -32,6 +30,7 @@ fun PlaySelectedProject(time: Time) {
         Projects.MainSample -> NavigationRouting(time)
         Projects.Nexus -> NavigationRoutingEntry()
         Projects.DOOM -> DoomCompose(time)
+        Projects.CarLights -> NavigationRoutingFlashLight(time)
     }
 }
 
