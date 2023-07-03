@@ -7,11 +7,10 @@ import androidx.compose.ui.window.ComposeUIViewController
 import engine.PlaySelectedProject
 import platform.UIKit.UIViewController
 
-object IosTime : Time {
-    override fun now(): Long = kotlin.system.getTimeNanos()
-}
+    object IosTime : Time {
+        override fun now(): Long = kotlin.system.getTimeNanos()
+    }
 
 fun MainViewController() : UIViewController = ComposeUIViewController {
     PlaySelectedProject(IosTime)
 }
-
