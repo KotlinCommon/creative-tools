@@ -1,9 +1,19 @@
 package engine
 
 import Time
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.drawscope.Fill
 import doom.DoomCompose
+import flashLight.LightCone
 import flashLight.NavigationRoutingFlashLight
+
 //import mainSample.scenes.NavigationRouting
 //import nexus.NavigationRoutingEntry
 
