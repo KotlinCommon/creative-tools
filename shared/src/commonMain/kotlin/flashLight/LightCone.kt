@@ -34,24 +34,3 @@ fun LightCone(
     path.lineTo(lightSourcePosition.x, lightSourcePosition.y)
     return path
 }
-
-/*
-private extension Double {
-    enum OutsideLightCone {
-        static let startAngle: CGFloat = 53
-        static let endAngle: CGFloat = 127
-        static let opacity: CGFloat = 0.4
-    }
-
-    enum MiddleLightCone {
-        static let startAngle: CGFloat = 65
-        static let endAngle: CGFloat = 115
-        static let opacity: CGFloat = 0.5
-    }
-
-    enum CenterLightCone {
-        static let startAngle: CGFloat = 77
-        static let endAngle: CGFloat = 103
-        static let opacity: CGFloat = 0.6
-    }
-}*/
