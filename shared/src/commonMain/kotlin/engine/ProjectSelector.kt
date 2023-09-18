@@ -16,6 +16,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Fill
 import flashLight.LightCone
+import flashLight.TangentCone
 import kotlinx.coroutines.delay
 
 //import mainSample.scenes.NavigationRouting
@@ -61,12 +62,15 @@ fun PlaySelectedProject(time: Time) {
             .fillMaxSize()
             .background(Color.Gray)
     ) {
+
+        val lightSourcePosition = Offset(x = size.width / 2, y = size.height - 220)
+
         drawPath(
             path =
             LightCone(
                 startAngle = 53.0,
                 endAngle = 127.0,
-                lightSourcePosition = Offset(x = size.width / 2, y = size.height - 220),
+                lightSourcePosition = lightSourcePosition,
                 size
             ),
             color = Color(red = 1f, green = 1f, blue = 1f, alpha = outerBeam.value), style = Fill
@@ -77,7 +81,7 @@ fun PlaySelectedProject(time: Time) {
             LightCone(
                 startAngle = 65.0,
                 endAngle = 115.0,
-                lightSourcePosition = Offset(x = size.width / 2, y = size.height - 220),
+                lightSourcePosition = lightSourcePosition,
                 size
             ),
             color = Color(red = 1f, green = 1f, blue = 1f, alpha = middleBeam.value), style = Fill
@@ -88,7 +92,7 @@ fun PlaySelectedProject(time: Time) {
             LightCone(
                 startAngle = 77.0,
                 endAngle = 103.0,
-                lightSourcePosition = Offset(x = size.width / 2, y = size.height - 220),
+                lightSourcePosition = lightSourcePosition,
                 size
             ),
             color = Color(red = 1f, green = 1f, blue = 1f, alpha = mainBeam.value), style = Fill
