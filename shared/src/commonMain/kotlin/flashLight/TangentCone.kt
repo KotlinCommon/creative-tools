@@ -1,6 +1,7 @@
 package flashLight
 
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Path
 import flashLight.ObjectPosition.Companion.determinePosition
 import kotlin.math.atan2
@@ -13,14 +14,14 @@ data class Angle(val radians: Float) : Comparable<Angle> {
 }
 
 
-data class Rect(val left: Float, val top: Float, val right: Float, val bottom: Float) {
-    fun width() = right - left
-    fun height() = bottom - top
-
-    fun contains(x: Double, y: Double): Boolean {
-        return x >= left && x <= right && y >= top && y <= bottom
-    }
-}
+//data class Rect(val left: Float, val top: Float, val right: Float, val bottom: Float) {
+//    fun width() = right - left
+//    fun height() = bottom - top
+//
+//    fun contains(x: Double, y: Double): Boolean {
+//        return x >= left && x <= right && y >= top && y <= bottom
+//    }
+//}
 
 sealed class ObjectPosition {
     object LEFT : ObjectPosition()
@@ -30,11 +31,11 @@ sealed class ObjectPosition {
     companion object {
         fun determinePosition(objectRect: Rect, centerPoint: Point2D): ObjectPosition {
             val objectIsOnCenter =
-                objectRect.right <= centerPoint.x + objectRect.width() && objectRect.left >= centerPoint.x - objectRect.width()
+                objectRect.right <= centerPoint.x + objectRect.width && objectRect.left >= centerPoint.x - objectRect.width
 
             return when {
                 objectIsOnCenter -> MIDDLE
-                objectRect.right > centerPoint.x + objectRect.width() -> RIGHT
+                objectRect.right > centerPoint.x + objectRect.width -> RIGHT
                 else -> LEFT
             }
         }
@@ -44,14 +45,15 @@ sealed class ObjectPosition {
 data class Point2D(val x: Float, val y: Float)
 
 fun Point2D.toOffset() = Offset(x, y)
+fun Offset.toPoint2D() = Point2D(x, y)
 
 class TangentCone(
     val rectangle: Rect,
     val lightCenterPoint: Point2D,
-    var lightConeRange: ClosedRange<Angle>
+    var lightConeRange: ClosedFloatingPointRange<Float>
 ) {
 
-    private lateinit var centerPoint: Point2D
+    private var centerPoint: Point2D = lightCenterPoint
     private var tangent1End: Point2D
     private var tangent2End: Point2D
     private var objectPosition: ObjectPosition =
@@ -107,10 +109,8 @@ class TangentCone(
         return lightConeRange.contains(tangentAngle)
     }
 
-    private fun calculateTangentAngle(tangentPoint: Point2D, centerPoint: Point2D): Angle {
-        val tangentAngleRadians =
-            atan2(centerPoint.y - tangentPoint.y, centerPoint.x - tangentPoint.x)
-        return Angle(tangentAngleRadians)
+    private fun calculateTangentAngle(tangentPoint: Point2D, centerPoint: Point2D): Float {
+        return atan2(centerPoint.y - tangentPoint.y, centerPoint.x - tangentPoint.x)
     }
 
     private fun calculateTangentEnd(

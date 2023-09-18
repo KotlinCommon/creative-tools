@@ -7,15 +7,21 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.Stable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Fill
+import doom.drawRect
 import flashLight.LightCone
+import flashLight.TangentCone
+import flashLight.toPoint2D
 import kotlinx.coroutines.delay
 
 //import mainSample.scenes.NavigationRouting
@@ -96,5 +102,16 @@ fun PlaySelectedProject(time: Time) {
             ),
             color = Color(red = 1f, green = 1f, blue = 1f, alpha = mainBeam.value), style = Fill
         )
+        val rect = Rect(Offset(400f, 200f), Size(60f, 144f))
+        drawPath(
+            path =
+            TangentCone(
+                rectangle = rect,
+                lightCenterPoint = lightSourcePosition.toPoint2D(),
+                lightConeRange = 53f..127f
+            ).getPath(),
+            color = Color.Black, style = Fill
+        )
+        drawRect(color = Color.Blue, topLeft = rect.topLeft, size = rect.size, alpha = 1.0f)
     }
 }
