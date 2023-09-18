@@ -89,20 +89,18 @@ class TangentCone(
         val path = Path()
         path.moveTo(centerPoint.x, centerPoint.y)
         path.lineTo(tangent2End.x, tangent2End.y)
-//        path.lineTo(tangent1End.x, tangent1End.y)
-//        path.lineTo(centerPoint.x, centerPoint.y)
 
-//        if (tangentIsPartOfLightCone(tangent1End, centerPoint)) {
+        if (!tangentIsPartOfLightCone(tangent1End, centerPoint)) {
             path.lineTo(tangent1End.x, tangent1End.y)
-//        } else {
-//            if (objectPosition == ObjectPosition.RIGHT) {
-//                path.lineTo(centerPoint.x, 0f)
-//                path.lineTo(centerPoint.x, centerPoint.y)
-//            } else {
-//                path.lineTo(0f, 0f)
-//                path.lineTo(0f, centerPoint.y)
-//            }
-//        }
+        } else {
+            if (objectPosition == ObjectPosition.RIGHT) {
+                path.lineTo(centerPoint.x, 0f)
+                path.lineTo(centerPoint.x, centerPoint.y)
+            } else {
+                path.lineTo(0f, 0f)
+                path.lineTo(0f, centerPoint.y)
+            }
+        }
         return path
     }
 
