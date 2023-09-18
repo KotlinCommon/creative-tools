@@ -102,7 +102,7 @@ fun PlaySelectedProject(time: Time) {
             ),
             color = Color(red = 1f, green = 1f, blue = 1f, alpha = mainBeam.value), style = Fill
         )
-        val rect = Rect(Offset(400f, 200f), Size(60f, 144f))
+        val rect = Rect(Offset(800f, 200f), Size(150f, 350f))
         drawPath(
             path =
             TangentCone(
@@ -112,6 +112,19 @@ fun PlaySelectedProject(time: Time) {
             ).getPath(),
             color = Color.Black, style = Fill
         )
+
+        val rect1 = Rect(Offset(600f, 200f), Size(150f, 350f))
+        drawPath(
+            path =
+            TangentCone(
+                rectangle = rect1,
+                lightCenterPoint = lightSourcePosition.toPoint2D(),
+                lightConeRange = 53f..127f
+            ).getPath(),
+            color = Color.Black, style = Fill
+        )
+
+        drawRect(color = Color.Blue, topLeft = rect1.topLeft, size = rect1.size, alpha = 1.0f)
         drawRect(color = Color.Blue, topLeft = rect.topLeft, size = rect.size, alpha = 1.0f)
     }
 }
