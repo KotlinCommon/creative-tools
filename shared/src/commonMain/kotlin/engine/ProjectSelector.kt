@@ -4,6 +4,7 @@ import Time
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -18,6 +19,7 @@ import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Fill
+import androidx.compose.ui.input.pointer.pointerInput
 import doom.drawRect
 import flashLight.LightCone
 import flashLight.TangentCone
@@ -62,10 +64,16 @@ fun PlaySelectedProject(time: Time) {
         targetValue = if(outerBeamSwitch) 0.4f else 0.0f,
     )
 
+    val mousePosition = remember { mutableStateOf(Offset(0f, 0f)) } // initialize with the appropriate mouse position
+
     Canvas(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Gray)
+            .background(Color.Gray).pointerInput(Unit) {
+                detectDragGestures { change, _ ->
+                    mousePosition.value = change.position
+                }
+            }
     ) {
 
         val lightSourcePosition = Offset(x = size.width / 2, y = size.height - 220)
@@ -102,7 +110,7 @@ fun PlaySelectedProject(time: Time) {
             ),
             color = Color(red = 1f, green = 1f, blue = 1f, alpha = mainBeam.value), style = Fill
         )
-        val rect = Rect(Offset(800f, 200f), Size(150f, 350f))
+        val rect = Rect(Offset(mousePosition.value.x, mousePosition.value.y), Size(150f, 350f))
         drawPath(
             path =
             TangentCone(

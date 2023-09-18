@@ -66,18 +66,18 @@ class TangentCone(
 
         when (objectPosition) {
             ObjectPosition.LEFT -> {
-                tangent1Point = Point2D(rectangle.left, rectangle.right)
-                tangent2Point = Point2D(rectangle.right, rectangle.top)
+                tangent1Point = Point2D(rectangle.bottomLeft.x, rectangle.bottomLeft.y)
+                tangent2Point = Point2D(rectangle.topRight.x, rectangle.topRight.y)
             }
 
             ObjectPosition.MIDDLE -> {
-                tangent1Point = Point2D(rectangle.left, rectangle.bottom)
-                tangent2Point = Point2D(rectangle.right, rectangle.bottom)
+                tangent1Point = Point2D(rectangle.bottomLeft.x, rectangle.bottomLeft.y)
+                tangent2Point = Point2D(rectangle.bottomRight.x, rectangle.bottomRight.y)
             }
 
             ObjectPosition.RIGHT -> {
-                tangent1Point = Point2D(rectangle.right, rectangle.bottom)
-                tangent2Point = Point2D(rectangle.left, rectangle.top)
+                tangent1Point = Point2D(rectangle.bottomRight.x, rectangle.bottomRight.y)
+                tangent2Point = Point2D(rectangle.topLeft.x, rectangle.topLeft.y)
             }
         }
 
@@ -89,8 +89,20 @@ class TangentCone(
         val path = Path()
         path.moveTo(centerPoint.x, centerPoint.y)
         path.lineTo(tangent2End.x, tangent2End.y)
-        path.lineTo(tangent1End.x, tangent1End.y)
-        path.lineTo(centerPoint.x, centerPoint.y)
+//        path.lineTo(tangent1End.x, tangent1End.y)
+//        path.lineTo(centerPoint.x, centerPoint.y)
+
+//        if (tangentIsPartOfLightCone(tangent1End, centerPoint)) {
+            path.lineTo(tangent1End.x, tangent1End.y)
+//        } else {
+//            if (objectPosition == ObjectPosition.RIGHT) {
+//                path.lineTo(centerPoint.x, 0f)
+//                path.lineTo(centerPoint.x, centerPoint.y)
+//            } else {
+//                path.lineTo(0f, 0f)
+//                path.lineTo(0f, centerPoint.y)
+//            }
+//        }
         return path
     }
 
