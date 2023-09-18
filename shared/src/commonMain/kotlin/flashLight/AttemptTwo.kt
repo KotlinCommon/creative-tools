@@ -19,7 +19,7 @@ import kotlin.math.sin
 import kotlin.math.sqrt
 
 
-data class Point(val x: Double, val y: Float)
+data class Point(val x: Double, val y: Double)
 data class Ray(val a: Point, val b: Point)
 data class Segment(val a: Point, val b: Point)
 data class Intersection(val point: Point, val param: Double, var angle: Double? = null)

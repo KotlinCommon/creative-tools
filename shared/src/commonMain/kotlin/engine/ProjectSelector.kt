@@ -16,7 +16,6 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Fill
 import flashLight.LightCone
-import flashLight.TangentCone
 import kotlinx.coroutines.delay
 
 //import mainSample.scenes.NavigationRouting
