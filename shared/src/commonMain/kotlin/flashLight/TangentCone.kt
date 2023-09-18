@@ -1,5 +1,6 @@
 package flashLight
 
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Path
 import kotlin.math.atan2
 import kotlin.math.min
@@ -42,6 +43,8 @@ sealed class ObjectPosition {
 }
 
 data class Point2D(val x: Double, val y: Double)
+
+fun Point2D.toOffset() = Offset(x.toFloat(), y.toFloat())
 
 data class TangentCone(
     private val centerPoint: Point2D,
