@@ -9,16 +9,15 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 fun LightCone(
-    startAngle: Double,
-    endAngle: Double,
+    angle: Pair<Double, Double>,
     lightSourcePosition: Offset,
     size: Size
 ): Path {
 
     val path = Path()
     path.moveTo(lightSourcePosition.x, lightSourcePosition.y)
-    val adjustedStartAngle = startAngle + 180
-    val adjustedEndAngle = endAngle + 180
+    val adjustedStartAngle = angle.first + 180
+    val adjustedEndAngle = angle.second + 180
 
     val startX = lightSourcePosition.x + size.height * cos(adjustedStartAngle * PI / 180)
     val startY = lightSourcePosition.y + size.height * sin(adjustedStartAngle * PI / 180)

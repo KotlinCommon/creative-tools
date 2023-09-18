@@ -1,0 +1,8 @@
+[versions]
+libres = "1.1.8"
+
+[libraries]
+libres = { module = "io.github.skeptick.libres:libres-compose", version.ref = "libres" }
+
+[plugins]
+libres = { id = "io.github.skeptick.libres", version.ref = "libres" }

@@ -5,6 +5,7 @@ plugins {
     kotlin("native.cocoapods")
     id("com.android.library")
     id("org.jetbrains.compose")
+    alias(libs.plugins.libres)
 }
 
 version = "1.0-SNAPSHOT"
@@ -57,6 +58,7 @@ kotlin {
                 implementation(compose.material)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.components.resources)
+                implementation(libs.libres)
             }
         }
         val androidMain by getting {
@@ -82,6 +84,16 @@ kotlin {
             dependsOn(macosMain)
         }
     }
+}
+
+libres {
+    libres {
+        generatedClassName = "MainRes" // "Res" by default
+        generateNamedArguments = true // false by default
+        baseLocaleLanguageCode = "en" // "en" by default
+        camelCaseNamesForAppleFramework = true // false by default
+    }
+    // https://github.com/Skeptick/libres#setup
 }
 
 android {
