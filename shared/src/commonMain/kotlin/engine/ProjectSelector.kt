@@ -47,6 +47,10 @@ enum class Projects {
 
 @Composable
 fun PlaySelectedProject(time: Time) {
+    var x = 200f
+    var y = 200f
+    var offsetX = x
+    var offsetY = y
     var mainBeamSwitch by remember { mutableStateOf(false) }
     var middleBeamSwitch by remember { mutableStateOf(false) }
     var outerBeamSwitch by remember { mutableStateOf(false) }
@@ -84,6 +88,8 @@ fun PlaySelectedProject(time: Time) {
             .fillMaxSize()
             .background(Color.Gray).pointerInput(Unit) {
                 detectDragGestures { change, _ ->
+//                    offsetX = mousePosition.value.x - x
+//                    offsetY = mousePosition.value.y - y
                     mousePosition.value = change.position
                 }
             }
@@ -125,6 +131,7 @@ fun PlaySelectedProject(time: Time) {
         )
 
         val rect1 = Rect(Offset(600f, 200f), Size(150f, 350f))
+
         drawPath(
             path =
             TangentCone(
@@ -136,7 +143,15 @@ fun PlaySelectedProject(time: Time) {
 
         )
 
-        val rect = Rect(Offset(mousePosition.value.x, mousePosition.value.y), Size(150f, 350f))
+
+        val rect = Rect(Offset(x, y), Size(150f, 350f))
+        x = mousePosition.value.x
+        y = mousePosition.value.y
+//        if(Rect(Offset(mousePosition.value.x, mousePosition.value.y), Size(1f, 1f)).isColliding(rect)){
+//            x = mousePosition.value.x - offsetX
+//            y = mousePosition.value.y - offsetY
+//            println("collided")
+//        }
         drawPath(
             path =
             TangentCone(
@@ -160,4 +175,14 @@ fun PlaySelectedProject(time: Time) {
         drawRect(color = Color.Blue, topLeft = rect1.topLeft, size = rect1.size, alpha = 1.0f)
         drawRect(color = Color.Blue, topLeft = rect.topLeft, size = rect.size, alpha = 1.0f)
     }
+}
+
+fun Rect.isColliding(other: Rect): Boolean {
+    return topLeft.x < other.topLeft.x + other.width &&
+
+            topLeft.x + width > other.topLeft.x &&
+
+            topLeft.y < other.topLeft.y + other.height &&
+
+            topLeft.y + height > other.topLeft.y
 }
