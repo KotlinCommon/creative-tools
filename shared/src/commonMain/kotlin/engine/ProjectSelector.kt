@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.drawscope.Fill
 import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.input.pointer.pointerInput
+import animationScheduler.`as`.TestScene
 import doom.drawRect
 import flashLight.LightCone
 import flashLight.TangentCone
@@ -47,117 +48,119 @@ enum class Projects {
 
 @Composable
 fun PlaySelectedProject(time: Time) {
-    var mainBeamSwitch by remember { mutableStateOf(false) }
-    var middleBeamSwitch by remember { mutableStateOf(false) }
-    var outerBeamSwitch by remember { mutableStateOf(false) }
-    LaunchedEffect(Unit) {
-        delay(300)
-        mainBeamSwitch = true
-    }
-    val mainBeam = animateFloatAsState(
-        targetValue = if (mainBeamSwitch) 0.6f else 0.0f,
-        finishedListener = {
-            middleBeamSwitch = true
-        }
-    )
-    val middleBeam = animateFloatAsState(
-        targetValue = if (middleBeamSwitch) 0.5f else 0.0f,
-        finishedListener = {
-            outerBeamSwitch = true
-        }
-    )
-    val outerBeam = animateFloatAsState(
-        targetValue = if (outerBeamSwitch) 0.4f else 0.0f,
-    )
-
-    val mousePosition = remember {
-        mutableStateOf(
-            Offset(
-                0f,
-                0f
-            )
-        )
-    } // initialize with the appropriate mouse position
-
-    Canvas(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.Gray).pointerInput(Unit) {
-                detectDragGestures { change, _ ->
-                    mousePosition.value = change.position
-                }
-            }
-    ) {
-
-        val lightSourcePosition = Offset(x = size.width / 2, y = size.height - 220)
-
-        drawPath(
-            path =
-            LightCone(
-                startAngle = 53.0,
-                endAngle = 127.0,
-                lightSourcePosition = lightSourcePosition,
-                size
-            ),
-            color = Color(red = 1f, green = 1f, blue = 1f, alpha = outerBeam.value), style = Fill
-        )
-
-        drawPath(
-            path =
-            LightCone(
-                startAngle = 65.0,
-                endAngle = 115.0,
-                lightSourcePosition = lightSourcePosition,
-                size
-            ),
-            color = Color(red = 1f, green = 1f, blue = 1f, alpha = middleBeam.value), style = Fill
-        )
-
-        drawPath(
-            path =
-            LightCone(
-                startAngle = 77.0,
-                endAngle = 103.0,
-                lightSourcePosition = lightSourcePosition,
-                size
-            ),
-            color = Color(red = 1f, green = 1f, blue = 1f, alpha = mainBeam.value), style = Fill
-        )
-
-        val rect1 = Rect(Offset(600f, 200f), Size(150f, 350f))
-        drawPath(
-            path =
-            TangentCone(
-                rectangle = rect1,
-                lightCenterPoint = lightSourcePosition.toPoint2D(),
-                lightConeRange = 53f..127f
-            ).getPath(),
-            color = Color.Black, style = Fill
-
-        )
-
-        val rect = Rect(Offset(mousePosition.value.x, mousePosition.value.y), Size(150f, 350f))
-        drawPath(
-            path =
-            TangentCone(
-                rectangle = rect,
-                lightCenterPoint = lightSourcePosition.toPoint2D(),
-                lightConeRange = 53f..127f
-            ).getPath(),
-            color = Color.Black, style = Fill
-        )
-
-        // Define the masking area
-        clipRect(left = 50f, top = 50f, right = 200f, bottom = 200f) {
-            // Everything drawn here is restricted (or masked) to the specified rectangle
-            drawCircle(
-                center = Offset(size.width / 2, size.height / 2),
-                radius = 150f,
-                color = Color.Red
-            )
-        }
-
-        drawRect(color = Color.Blue, topLeft = rect1.topLeft, size = rect1.size, alpha = 1.0f)
-        drawRect(color = Color.Blue, topLeft = rect.topLeft, size = rect.size, alpha = 1.0f)
-    }
+    _time = time
+    TestScene()
+//    var mainBeamSwitch by remember { mutableStateOf(false) }
+//    var middleBeamSwitch by remember { mutableStateOf(false) }
+//    var outerBeamSwitch by remember { mutableStateOf(false) }
+//    LaunchedEffect(Unit) {
+//        delay(300)
+//        mainBeamSwitch = true
+//    }
+//    val mainBeam = animateFloatAsState(
+//        targetValue = if (mainBeamSwitch) 0.6f else 0.0f,
+//        finishedListener = {
+//            middleBeamSwitch = true
+//        }
+//    )
+//    val middleBeam = animateFloatAsState(
+//        targetValue = if (middleBeamSwitch) 0.5f else 0.0f,
+//        finishedListener = {
+//            outerBeamSwitch = true
+//        }
+//    )
+//    val outerBeam = animateFloatAsState(
+//        targetValue = if (outerBeamSwitch) 0.4f else 0.0f,
+//    )
+//
+//    val mousePosition = remember {
+//        mutableStateOf(
+//            Offset(
+//                0f,
+//                0f
+//            )
+//        )
+//    } // initialize with the appropriate mouse position
+//
+//    Canvas(
+//        modifier = Modifier
+//            .fillMaxSize()
+//            .background(Color.Gray).pointerInput(Unit) {
+//                detectDragGestures { change, _ ->
+//                    mousePosition.value = change.position
+//                }
+//            }
+//    ) {
+//
+//        val lightSourcePosition = Offset(x = size.width / 2, y = size.height - 220)
+//
+//        drawPath(
+//            path =
+//            LightCone(
+//                startAngle = 53.0,
+//                endAngle = 127.0,
+//                lightSourcePosition = lightSourcePosition,
+//                size
+//            ),
+//            color = Color(red = 1f, green = 1f, blue = 1f, alpha = outerBeam.value), style = Fill
+//        )
+//
+//        drawPath(
+//            path =
+//            LightCone(
+//                startAngle = 65.0,
+//                endAngle = 115.0,
+//                lightSourcePosition = lightSourcePosition,
+//                size
+//            ),
+//            color = Color(red = 1f, green = 1f, blue = 1f, alpha = middleBeam.value), style = Fill
+//        )
+//
+//        drawPath(
+//            path =
+//            LightCone(
+//                startAngle = 77.0,
+//                endAngle = 103.0,
+//                lightSourcePosition = lightSourcePosition,
+//                size
+//            ),
+//            color = Color(red = 1f, green = 1f, blue = 1f, alpha = mainBeam.value), style = Fill
+//        )
+//
+//        val rect1 = Rect(Offset(600f, 200f), Size(150f, 350f))
+//        drawPath(
+//            path =
+//            TangentCone(
+//                rectangle = rect1,
+//                lightCenterPoint = lightSourcePosition.toPoint2D(),
+//                lightConeRange = 53f..127f
+//            ).getPath(),
+//            color = Color.Black, style = Fill
+//
+//        )
+//
+//        val rect = Rect(Offset(mousePosition.value.x, mousePosition.value.y), Size(150f, 350f))
+//        drawPath(
+//            path =
+//            TangentCone(
+//                rectangle = rect,
+//                lightCenterPoint = lightSourcePosition.toPoint2D(),
+//                lightConeRange = 53f..127f
+//            ).getPath(),
+//            color = Color.Black, style = Fill
+//        )
+//
+//        // Define the masking area
+//        clipRect(left = 50f, top = 50f, right = 200f, bottom = 200f) {
+//            // Everything drawn here is restricted (or masked) to the specified rectangle
+//            drawCircle(
+//                center = Offset(size.width / 2, size.height / 2),
+//                radius = 150f,
+//                color = Color.Red
+//            )
+//        }
+//
+//        drawRect(color = Color.Blue, topLeft = rect1.topLeft, size = rect1.size, alpha = 1.0f)
+//        drawRect(color = Color.Blue, topLeft = rect.topLeft, size = rect.size, alpha = 1.0f)
+//    }
 }

@@ -7,11 +7,10 @@ import engine.navigation.DestinationManager
 import engine.navigation.NavigationModule
 import mainSample.scenes.game.Game
 import mainSample.scenes.mainMenu.MainMenu
-import engine.time
 
 @Composable
 fun NavigationRouting(_time: Time) {
-    time = _time
+    engine._time = _time
     DestinationManager.setFirstDestination(MainMenu())
     MaterialTheme {
         NavigationModule { destination ->

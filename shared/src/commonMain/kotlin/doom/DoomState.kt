@@ -10,7 +10,6 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import engine.platformSleep
-import engine.time
 import kotlinx.coroutines.Runnable
 import kotlin.random.Random
 
@@ -25,13 +24,13 @@ fun DoomCompose(state: DoomState) {
 
 @Composable
 fun DoomCompose(_time: Time) {
-    time = _time
+    engine._time = _time
     val state = DoomState(300f + (Random.nextFloat() * 100))
 
     DoomCompose(state)
     println("Drawing")
     Canvas(modifier = Modifier.fillMaxSize()) {
-        var lastLoopTime = time.now()
+        var lastLoopTime = engine._time.now()
         val propagate: Runnable = object : Runnable {
             override fun run() {
                 state.offset = 300f + (Random.nextFloat() * 100)

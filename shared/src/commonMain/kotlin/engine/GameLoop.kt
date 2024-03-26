@@ -21,7 +21,7 @@ import kotlin.math.max
  */
 private const val oneSecondInNano = 1_000_000_000.0
 private const val fps = 60.0
-private const val desiredMillisPerFrame = oneSecondInNano / fps
+const val desiredMillisPerFrame = oneSecondInNano / fps
 
 expect fun platformSleep(millis: Long)
 
@@ -31,11 +31,11 @@ expect fun platformSleep(millis: Long)
 @Composable
 fun Run(deltaBlock: (Double, Int) -> Unit) {
     LaunchedEffect(Unit) {
-        var lastLoopTime = time.now()
+        var lastLoopTime = _time.now()
 
         while (true) {
             withFrameNanos { it }  // This waits for the next frame.
-            val now = time.now()
+            val now = _time.now()
             val updateLength = now - lastLoopTime
 
             if (updateLength >= desiredMillisPerFrame) {
@@ -48,7 +48,7 @@ fun Run(deltaBlock: (Double, Int) -> Unit) {
                 }
                 deltaBlock(delta, fps.toInt())
 
-                val waitTime = (lastLoopTime - time.now() + desiredMillisPerFrame) / oneSecondInNano
+                val waitTime = (lastLoopTime - _time.now() + desiredMillisPerFrame) / oneSecondInNano
                 delay(max(waitTime.toUInt(), 0u).toLong())
             }
         }
